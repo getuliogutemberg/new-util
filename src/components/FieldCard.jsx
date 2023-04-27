@@ -1,7 +1,7 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 
-const ChartCard = ({
+const FieldCard = ({
   flexGrow,
   title = "Titulo",
   subtitle = "Subtitulo",
@@ -80,4 +80,4 @@ const ChartCard = ({
   );
 };
 
-export default ChartCard;
+export default FieldCard;

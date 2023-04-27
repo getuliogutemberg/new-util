@@ -1,4 +1,4 @@
-const ChartsRow = ({ children, flexGrow = 1, hidden = false }) => {
+const FieldRow = ({ children, flexGrow = 1, hidden = false }) => {
   return (
     <div
       style={{
@@ -15,4 +15,4 @@ const ChartsRow = ({ children, flexGrow = 1, hidden = false }) => {
   );
 };
 
-export default ChartsRow;
+export default FieldRow;

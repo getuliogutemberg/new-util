@@ -1,66 +1,79 @@
 import React from "react";
-import ChartCard from "../components/ChartCard";
-import ChartRow from "../components/ChartRow";
+import FieldCard from "../components/FieldCard";
+import FieldRow from "../components/FieldRow";
+import FieldColumn from "../components/FieldColumn";
+import FieldView from "../components/FieldView";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import SimpleAccordion from "../components/tests/SimpleAccordion.tsx";
 
 function ClientView({ isLogged }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    !isLogged && navigate("/");
+  });
+
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "stretch",
-        width: `calc(100vw - ${isLogged ? "65px" : "0px"})`,
-        background: "#e7ebf0",
-        height: "93.3vh",
-        overflow: "auto",
-        flexWrapX: "wrap",
-        overflow: "auto",
-        // gap: "10px",
-        boxSizing: "border-box",
-        // margin: "10px",
+        height: "calc(100vh - 65px)",
+        overflowX: "auto",
       }}
     >
-      <ChartRow flexGrow={1} hidden={false}>
-        <ChartCard flexGrow={1} hidden={false} />
-        <ChartCard flexGrow={4} hidden={false} />
-        <ChartCard flexGrow={1} hidden={false} />
-      </ChartRow>
-      <ChartRow flexGrow={1} hidden={false}>
-        <ChartCard flexGrow={1} hidden={false} />
-        <ChartCard flexGrow={1} hidden={false} />
-      </ChartRow>
-      <ChartRow flexGrow={1} hidden={false}>
-        <ChartCard flexGrow={1} hidden={false} />
-        <ChartCard flexGrow={1} hidden={false} />
-        <ChartCard flexGrow={1} hidden={false} />
-      </ChartRow>
+      <SimpleAccordion />
+      <FieldView hidden={false}>
+        <FieldColumn flexGrow={1} hidden={false}>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={4} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+        </FieldColumn>
+        <FieldColumn flexGrow={1} hidden={true}>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={4} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+        </FieldColumn>
+        <FieldColumn flexGrow={1} hidden={true}>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={4} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+          <FieldRow flexGrow={1} hidden={false}>
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} />
+          </FieldRow>
+        </FieldColumn>
+      </FieldView>
     </div>
   );
 }
 
 export default ClientView;
-
-// card Graficos parametros: flexGrow, title,subtitle,img,
-{
-  /* <div
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    background: "violet",
-    // width: "33vw",
-    minWidth: "400px",
-    height: "31.1vh",
-    boxSizing: "border-box",
-    flexGrow: 1,
-    minHeight: "200px",
-  }}
->
-  <div>
-    <h1>Resumo</h1>
-    <p>Algum texto descritivo do resumo.</p>
-  </div>
-  <img src="/caminho/da/imagem.jpg" alt="Imagem" style={{ width: "50%" }} />
-</div>; */
-}
