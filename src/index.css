@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: url("./Assets/Images/loginBackground.png");
+  background: url("./Assets/Images/background.jpg");
+  height: 100vh;
+  background-size: cover;
 }
 
 code {

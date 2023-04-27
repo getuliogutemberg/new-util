@@ -21,7 +21,7 @@ import { useLocation, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FactoryIcon from "@mui/icons-material/Factory";
 import MonitorIcon from "@mui/icons-material/Monitor";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
@@ -42,7 +42,7 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 import Collapse from "@mui/material/Collapse";
 import Tooltip from "@mui/material/Tooltip";
-import avatarImg from "../Assets/Images/avatarImg.png";
+import avatar from "../Assets/Images/avatar.png";
 
 const drawerWidth = 300;
 
@@ -235,23 +235,46 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
     >
       <CssBaseline />
 
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} style={{ background: "#0c5e5a" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <Tooltip title={"Menu"} placement="right">
-              <IconButton
+            {isLogged ? (
+              <Tooltip title={"Menu"} placement="right">
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Link
+                key={"Login"}
                 color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{
-                  marginRight: 5,
-                  ...(open && { display: "none" }),
-                }}
+                to={"/login"}
+                style={{ textDecoration: "none", color: "white" }}
               >
-                <MenuIcon />
-              </IconButton>
-            </Tooltip>
+                <Tooltip title={"Login"} placement="right">
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    sx={{
+                      marginRight: 5,
+                      ...(open && { display: "none" }),
+                    }}
+                  >
+                    <LockOpenIcon />
+                  </IconButton>
+                </Tooltip>
+              </Link>
+            )}
 
             <Breadcrumbs
               separator={<NavigateNextIcon fontSize="small" />}
@@ -313,8 +336,8 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
               )}
             </List>
             {isLogged && (
-              <Tooltip title={"Remy Sharp"} placement="top-end">
-                <Avatar alt="Remy Sharp" src={avatarImg} />
+              <Tooltip title={"Npme do Usuário"} placement="top-end">
+                <Avatar alt="Npme do Usuário" src={avatar} />
               </Tooltip>
             )}
             <List>
@@ -357,169 +380,175 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
         </Toolbar>
       </AppBar>
 
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <Tooltip title={"Fechar"}>
-            <IconButton
-              onClick={() => {
-                setOpen(false);
-                setOpenInForma(false);
-              }}
-            >
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
-          </Tooltip>
-        </DrawerHeader>
-
-        <Divider />
-        <List>
-          {linksDrawer.map(({ text, icon, link }) => (
-            <Tooltip title={!open && text} placement="right">
-              <Link
-                key={text}
-                to={`${link}`}
-                style={{ textDecoration: "none", color: "black" }}
+      {isLogged && (
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <Tooltip title={"Fechar"}>
+              <IconButton
+                onClick={() => {
+                  setOpen(false);
+                  setOpenInForma(false);
+                }}
               >
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    onClick={handleDrawerClose}
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
-                  >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-                <Divider />
-              </Link>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
             </Tooltip>
-          ))}
+          </DrawerHeader>
 
-          {linksInForma.map(({ text, icon, link }) => (
-            <Tooltip title={!open && text} placement="right">
-              <Link
-                key={text}
-                to={`${link}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
-                    onClick={handleClick}
-                  >
-                    <ListItemIcon
+          <Divider />
+          <List>
+            {linksDrawer.map(({ text, icon, link }) => (
+              <Tooltip title={!open && text} placement="right">
+                <Link
+                  key={text}
+                  to={`${link}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      onClick={handleDrawerClose}
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      {icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                    {open ? (
-                      openInForma ? (
-                        <ExpandLess />
-                      ) : (
-                        <ExpandMore />
-                      )
-                    ) : null}
-                  </ListItemButton>
-                  <Collapse in={openInForma} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                      {subLinksInforma.map(({ text, icon, link }) => (
-                        <Tooltip title={!open && text}>
-                          <Link
-                            key={text}
-                            to={`${link}`}
-                            style={{ textDecoration: "none", color: "black" }}
-                          >
-                            <ListItemButton
-                              sx={{ pl: 4 }}
-                              onClick={handleDrawerClose}
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                  <Divider />
+                </Link>
+              </Tooltip>
+            ))}
+
+            {linksInForma.map(({ text, icon, link }) => (
+              <Tooltip title={!open && text} placement="right">
+                <Link
+                  key={text}
+                  to={`${link}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                      onClick={handleClick}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                      {open ? (
+                        openInForma ? (
+                          <ExpandLess />
+                        ) : (
+                          <ExpandMore />
+                        )
+                      ) : null}
+                    </ListItemButton>
+                    <Collapse in={openInForma} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding>
+                        {subLinksInforma.map(({ text, icon, link }) => (
+                          <Tooltip title={!open && text}>
+                            <Link
+                              key={text}
+                              to={`${link}`}
+                              style={{ textDecoration: "none", color: "black" }}
                             >
-                              <ListItemIcon>{icon}</ListItemIcon>
-                              <ListItemText primary={text} />
-                            </ListItemButton>
-                          </Link>
-                        </Tooltip>
-                      ))}
-                    </List>
-                  </Collapse>
-                </ListItem>
-                <Divider />
-              </Link>
-            </Tooltip>
-          ))}
-        </List>
+                              <ListItemButton
+                                sx={{ pl: 4 }}
+                                onClick={handleDrawerClose}
+                              >
+                                <ListItemIcon>{icon}</ListItemIcon>
+                                <ListItemText primary={text} />
+                              </ListItemButton>
+                            </Link>
+                          </Tooltip>
+                        ))}
+                      </List>
+                    </Collapse>
+                  </ListItem>
+                  <Divider />
+                </Link>
+              </Tooltip>
+            ))}
+          </List>
 
-        {/* <Divider /> */}
-        <List>
-          {subLinksInforma.map(({ text, icon, link }) => (
-            <Tooltip title={!open && text} placement="right">
-              <Link
-                key={text}
-                to={`${link}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    onClick={handleDrawerClose}
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
-                  >
-                    <ListItemIcon
+          {/* <Divider /> */}
+          <List>
+            {subLinksInforma.map(({ text, icon, link }) => (
+              <Tooltip title={!open && text} placement="right">
+                <Link
+                  key={text}
+                  to={`${link}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      onClick={handleDrawerClose}
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      {icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              </Link>
-            </Tooltip>
-          ))}
-        </List>
-      </Drawer>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+              </Tooltip>
+            ))}
+          </List>
+        </Drawer>
+      )}
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3 }}
+        sx={{
+          flexGrow: 1,
+          overflow: "hidden",
+          p: 0,
+        }}
         onClick={handleDrawerClose}
       >
         <DrawerHeader />

@@ -15,49 +15,6 @@ import TestsView from "../pages/TestsView.jsx";
 import TemplateView from "../pages/TemplateView.tsx";
 import { Navigate } from "react-router-dom";
 function AppRoutes() {
-  //   const jwt = require("jsonwebtoken");
-  //   const expressJwt = require("express-jwt");
-
-  //   const secret = "seu-segredo-aqui";
-
-  //   // Gera um token de acesso com base no ID do usuário
-  //   function generateToken(user) {
-  //     const payload = {
-  //       id: user.id,
-  //       email: user.email,
-  //       role: user.role,
-  //     };
-  //     const options = { expiresIn: "1h" };
-  //     return jwt.sign(payload, secret, options);
-  //   }
-
-  //   // Middleware que verifica se o token de acesso é válido
-  //   function validateToken(req, res, next) {
-  //     expressJwt({ secret })(req, res, (err) => {
-  //       if (err) {
-  //         return res.status(401).json({ message: "Token inválido" });
-  //       }
-  //       next();
-  //     });
-  //   }
-
-  //   // Rota de login que gera um token de acesso e envia de volta para o cliente
-  //   app.post("/login", async (req, res) => {
-  //     const { email, password } = req.body;
-  //     const user = await User.findOne({ email });
-  //     if (!user || !user.comparePassword(password)) {
-  //       return res.status(401).json({ message: "Email ou senha inválidos" });
-  //     }
-  //     const token = generateToken(user);
-  //     res.json({ token });
-  //   });
-
-  //   // Rota protegida que só pode ser acessada com um token de acesso válido
-  //   app.get("/minha-rota-protegida", validateToken, (req, res) => {
-  //     res.json({
-  //       message: "Esta rota só pode ser acessada com um token de acesso válido",
-  //     });
-  //   });
   const [isLogged, setIsLogged] = useState();
 
   useEffect(() => {
@@ -78,7 +35,7 @@ function AppRoutes() {
         path="/"
         element={
           <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-            <HomeView />
+            <HomeView isLogged={isLogged} />
           </TemplateView>
         }
       />

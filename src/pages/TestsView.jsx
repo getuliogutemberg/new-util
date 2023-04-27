@@ -14,12 +14,19 @@ import PrimarySearchAppBar from "../components/tests/PrimarySearchAppBar.tsx";
 import FixedBottomNavigation from "../components/tests/FixedBottomNavigation.tsx";
 import ServerSidePersistence from "../components/tests/ServerSidePersistence.tsx";
 import ReactSuspense from "../components/tests/ReactSuspense.js";
+import SpeechRecognitionComponentReq from "../components/tests/SpeechRecognitionComponentReq.jsx";
+import SpeechRecognitionComponentRes from "../components/tests/SpeechRecognitionComponentRes.jsx";
 
 function TestsView({ isLogged }) {
   return (
     <div>
       <h1>Tela de testes de Componentes</h1>
       <p>Aqui está alguns compnentes testados:</p>
+
+      <SpeechRecognitionComponentReq />
+      <br />
+      <SpeechRecognitionComponentRes />
+      <br />
       <PrimarySearchAppBar />
       <br />
       <ReactSuspense />
