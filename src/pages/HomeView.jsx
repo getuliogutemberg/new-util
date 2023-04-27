@@ -50,7 +50,7 @@ function HomeView({ isLogged }) {
         flexDirection: "row",
         justifyContent: "space-between",
         gap: "20px",
-        background: "linear-gradient(270deg, #0c5e5a 20%, #fff 100%)",
+        background: "linear-gradient(270deg, #0C5E5A7E 50%, #fff 100%)",
 
         opacity: "1",
       }}
@@ -85,7 +85,7 @@ function HomeView({ isLogged }) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          color: "white",
+          color: "black",
           opacity: "1",
           maxHeight: "800px",
           boxSizing: "border-box",

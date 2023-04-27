@@ -56,7 +56,7 @@ function AppRoutes() {
         path="/client"
         element={
           <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-            <ClientView />
+            <ClientView isLogged={isLogged} />
           </TemplateView>
         }
       />

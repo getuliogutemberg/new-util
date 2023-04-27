@@ -147,64 +147,92 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
   const linksTopBar = isLogged
     ? [
         {
-          icon: <ChatBubbleOutlineIcon />,
+          icon: <ChatBubbleOutlineIcon style={{ color: "white" }} />,
           text: "Feedback",
           link: `/feedback`,
         },
-        { icon: <HelpOutlineIcon />, text: "Faq", link: "/faq" },
         {
-          icon: <ExitToAppIcon />,
+          icon: <HelpOutlineIcon style={{ color: "white" }} />,
+          text: "Faq",
+          link: "/faq",
+        },
+        {
+          icon: <ExitToAppIcon style={{ color: "white" }} />,
           text: "Sair",
           link: "/",
         },
       ]
     : [
         {
-          icon: <ChatBubbleOutlineIcon />,
+          icon: <ChatBubbleOutlineIcon style={{ color: "black" }} />,
           text: "Feedback",
           link: `/feedback`,
         },
-        { icon: <HelpOutlineIcon />, text: "Faq", link: "/faq" },
+        {
+          icon: <HelpOutlineIcon style={{ color: "black" }} />,
+          text: "Faq",
+          link: "/faq",
+        },
       ];
 
   const linksDrawer = isLogged
     ? [
-        { icon: <MonitorIcon />, text: "Monitoramento", link: "/client" },
         {
-          icon: <WarningAmberIcon />,
+          icon: <MonitorIcon style={{ color: "black" }} />,
+          text: "Monitoramento",
+          link: "/client",
+        },
+        {
+          icon: <WarningAmberIcon style={{ color: "black" }} />,
           text: "Histórico de Recomendações",
           link: "/alerts",
         },
         {
-          icon: <ContentPasteSearchIcon />,
+          icon: <ContentPasteSearchIcon style={{ color: "black" }} />,
           text: "Histoticos de Sensores",
           link: "/sensor-data",
         },
       ]
-    : [{ icon: <VpnKeyIcon />, text: "Login", link: "/login" }];
+    : [
+        {
+          icon: <VpnKeyIcon style={{ color: "black" }} />,
+          text: "Login",
+          link: "/login",
+        },
+      ];
 
   const linksInForma = isLogged
-    ? [{ icon: <FactoryIcon />, text: "Painel inForma", link: "/master" }]
+    ? [
+        {
+          icon: <FactoryIcon style={{ color: "black" }} />,
+          text: "Painel inForma",
+          link: "/master",
+        },
+      ]
     : [];
 
   const subLinksInforma = isLogged
     ? [
         {
-          icon: <MemoryIcon />,
+          icon: <MemoryIcon style={{ color: "black" }} />,
           text: "Análises",
           link: "/analitics",
         },
         {
-          icon: <LineAxisIcon />,
+          icon: <LineAxisIcon style={{ color: "black" }} />,
           text: "Homologação",
           link: "/homologation",
         },
         {
-          icon: <SettingsIcon />,
+          icon: <SettingsIcon style={{ color: "black" }} />,
           text: "Configuracões",
           link: "/setup",
         },
-        { icon: <EmojiObjectsIcon />, text: "Tela de testes", link: "/tests" },
+        {
+          icon: <EmojiObjectsIcon style={{ color: "black" }} />,
+          text: "Tela de testes",
+          link: "/tests",
+        },
       ]
     : [];
 
