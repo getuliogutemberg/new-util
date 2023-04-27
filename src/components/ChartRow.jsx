@@ -1,8 +1,8 @@
-const ChartsRow = ({ children, flexGrow = 1 }) => {
+const ChartsRow = ({ children, flexGrow = 1, hidden = false }) => {
   return (
     <div
       style={{
-        display: "flex",
+        display: !hidden ? "flex" : "none",
         flexWrap: "wrap",
         justifyContent: "space-center",
         flexGrow: flexGrow,

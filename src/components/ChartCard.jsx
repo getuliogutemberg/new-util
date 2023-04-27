@@ -26,7 +26,7 @@ const ChartCard = ({
     // >
     <Paper
       sx={{
-        display: "flex",
+        display: !hidden ? "flex" : "none",
         flexDirection: "column",
         justifyContent: "space-between",
 
@@ -40,8 +40,10 @@ const ChartCard = ({
     >
       <div>
         <p>
-          <span style={{ fontWeight: "bold", padding: "20px" }}>{title} </span>
-          <span>{subtitle}</span>
+          <span style={{ fontWeight: "bold", padding: "10px" }}>{title} </span>
+          <span style={{ fontSize: "14px", padding: "10px" }}>
+            <i>{subtitle}</i>
+          </span>
         </p>
       </div>
       {chart ? (

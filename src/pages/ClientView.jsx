@@ -21,19 +21,19 @@ function ClientView({ isLogged }) {
         // margin: "10px",
       }}
     >
-      <ChartRow flexGrow={1}>
-        <ChartCard flexGrow={1} />
-        <ChartCard flexGrow={4} />
-        <ChartCard flexGrow={1} />
+      <ChartRow flexGrow={1} hidden={false}>
+        <ChartCard flexGrow={1} hidden={false} />
+        <ChartCard flexGrow={4} hidden={false} />
+        <ChartCard flexGrow={1} hidden={false} />
       </ChartRow>
-      <ChartRow flexGrow={1}>
-        <ChartCard flexGrow={1} />
-        <ChartCard flexGrow={1} />
+      <ChartRow flexGrow={1} hidden={false}>
+        <ChartCard flexGrow={1} hidden={false} />
+        <ChartCard flexGrow={1} hidden={false} />
       </ChartRow>
-      <ChartRow flexGrow={1}>
-        <ChartCard flexGrow={1} />
-        <ChartCard flexGrow={1} />
-        <ChartCard flexGrow={1} />
+      <ChartRow flexGrow={1} hidden={false}>
+        <ChartCard flexGrow={1} hidden={false} />
+        <ChartCard flexGrow={1} hidden={false} />
+        <ChartCard flexGrow={1} hidden={false} />
       </ChartRow>
     </div>
   );
