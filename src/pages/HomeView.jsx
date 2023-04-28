@@ -63,7 +63,7 @@ function HomeView({ isLogged }) {
           justifyContent: "center",
           alignItems: "end",
           // background: "red",
-          height: "93.3vh",
+          height: "calc(100vh - 65px)",
 
           boxSizing: "border-box",
           padding: "20px",
@@ -231,6 +231,7 @@ function HomeView({ isLogged }) {
             position: "absolute",
             bottom: 10,
             right: isLogged ? 20 : 20,
+            cursor: "pointer",
           }}
           onClick={() => setDebug(!debug)}
         >

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomeView from "../pages/HomeView.jsx";
 import SensorDataView from "../pages/SensorDataView.jsx";
-import AlertsView from "../pages/AlertsView.jsx";
+import RecomendationView from "../pages/RecomendationView.jsx";
 import ClientView from "../pages/ClientView.jsx";
 import AdminView from "../pages/AdminView.jsx";
 import MasterView from "../pages/MasterView.jsx";
@@ -100,7 +100,7 @@ function AppRoutes() {
         element={
           <Protected isLogged={isLogged}>
             <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-              <AlertsView />
+              <RecomendationView isLogged={isLogged} />
             </TemplateView>
           </Protected>
         }

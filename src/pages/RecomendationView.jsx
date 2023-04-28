@@ -7,7 +7,7 @@ import FieldRecomendations from "../components/FieldRecomendations";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ClientView({ isLogged }) {
+function RecomendationView({ isLogged }) {
   const layout = {
     FieldRecomendations: {
       hidden: false,
@@ -58,21 +58,20 @@ function ClientView({ isLogged }) {
             hidden={layout.FieldRow.hidden}
           >
             <FieldCard flexGrow={1} hidden={false} />
-            <FieldCard flexGrow={4} hidden={false} />
-            <FieldCard flexGrow={1} hidden={false} />
           </FieldRow>
+        </FieldColumn>
+        <FieldColumn
+          flexGrow={120}
+          hidden={layout.FieldColumn.hidden}
+          showFieldRecomendations={!layout.FieldRecomendations.hidden}
+        >
           <FieldRow
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
             <FieldCard flexGrow={1} hidden={false} />
-            <FieldCard flexGrow={1} hidden={false} />
           </FieldRow>
-          <FieldRow
-            flexGrow={layout.FieldRow.flexGrow}
-            hidden={layout.FieldRow.hidden}
-          >
-            <FieldCard flexGrow={1} hidden={false} />
+          <FieldRow flexGrow={100} hidden={layout.FieldRow.hidden}>
             <FieldCard flexGrow={1} hidden={false} />
             <FieldCard flexGrow={1} hidden={false} />
           </FieldRow>
@@ -82,4 +81,4 @@ function ClientView({ isLogged }) {
   );
 }
 
-export default ClientView;
+export default RecomendationView;

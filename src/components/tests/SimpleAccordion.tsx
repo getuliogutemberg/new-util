@@ -16,6 +16,7 @@ export default function SimpleAccordion() {
         >
           <Typography>Accordion 1</Typography>
         </AccordionSummary>
+
         <AccordionDetails>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -23,6 +24,7 @@ export default function SimpleAccordion() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -38,6 +40,7 @@ export default function SimpleAccordion() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion disabled>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

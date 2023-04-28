@@ -15,7 +15,7 @@ const FieldColumn = ({ children, flexGrow = 1, hidden = false }) => {
         // gap: "10px",
         boxSizing: "border-box",
         // margin: "10px",
-        // flexGrow: flexGrow,
+        flexGrow: flexGrow,
       }}
     >
       {children}

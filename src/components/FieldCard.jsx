@@ -32,7 +32,7 @@ const FieldCard = ({
 
         minWidth: "400px",
 
-        minHeight: "200px",
+        minHeight: "250px",
         boxSizing: "border-box",
         flexGrow: flexGrow,
         margin: "5px",
