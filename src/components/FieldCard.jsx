@@ -1,11 +1,14 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 
+import React from "react";
+import { Children } from "react";
+
 const FieldCard = ({
   flexGrow,
   title = "Titulo",
   subtitle = "Subtitulo",
-  chart,
+  children,
   hidden = false,
 }) => {
   return (
@@ -30,7 +33,7 @@ const FieldCard = ({
         flexDirection: "column",
         justifyContent: "space-between",
 
-        minWidth: "400px",
+        minWidth: "250px",
 
         minHeight: "250px",
         boxSizing: "border-box",
@@ -46,8 +49,8 @@ const FieldCard = ({
           </span>
         </p>
       </div>
-      {chart ? (
-        { chart }
+      {children ? (
+        children
       ) : (
         // <img
         //   src="/logo512.png"

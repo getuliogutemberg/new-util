@@ -1,3 +1,5 @@
+import React from "react";
+
 const FieldColumn = ({ children, flexGrow = 1, hidden = false }) => {
   return (
     <div
