@@ -7,10 +7,10 @@ import FieldRecomendations from "../components/FieldRecomendations";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SensorDataView({}) {
+function SensorDataView({ showRecomendation = false }) {
   const layout = {
     FieldRecomendations: {
-      hidden: false,
+      hidden: showRecomendation,
       flexGrow: 1,
     },
     FieldView: {
@@ -45,7 +45,7 @@ function SensorDataView({}) {
 
       <FieldView flexGrow={1} hidden={layout.FieldView.hidden}>
         <FieldColumn
-          flexGrow={layout.FieldColumn.flexGrow}
+          flexGrow={1}
           hidden={layout.FieldColumn.hidden}
           showFieldRecomendations={!layout.FieldRecomendations.hidden}
         >
@@ -57,7 +57,7 @@ function SensorDataView({}) {
           </FieldRow>
         </FieldColumn>
         <FieldColumn
-          flexGrow={120}
+          flexGrow={10}
           hidden={layout.FieldColumn.hidden}
           showFieldRecomendations={!layout.FieldRecomendations.hidden}
         >

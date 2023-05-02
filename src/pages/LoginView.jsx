@@ -1,17 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { Button, Paper } from "@mui/material";
 import logo from "../Assets/Images/logo.png";
 import robot from "../Assets/Images/robot2.png";
-
+import axios from "axios";
 import Typography from "@mui/material/Typography";
 
 function LoginView({ setIsLogged }) {
   const navigate = useNavigate();
-  const handleSubmit = () => {
+
+  const [acess, setAcess] = useState({});
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setAcess({ ...acess, [name]: value });
+  };
+
+  const [error, setError] = useState(null);
+  const [sucess, setSucess] = useState(null);
+  const [openSnackbar, setOpenSnackbar] = useState(true);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setIsLogged(true);
-    navigate("/");
+    axios
+      .get("http://localhost:3001/users")
+      .then((response) => {
+        var filtrado = response.data.filter(function (obj) {
+          return obj.email == acess.email;
+        });
+        return filtrado;
+      })
+      .then((response) => {
+        console.log(acess);
+        console.log(response);
+        var acess = response.filter(function (obj) {
+          return obj.password == acess.password;
+        });
+        console.log(acess);
+        if (response.lenght > 0 && acess !== {}) {
+          if (
+            response.email === acess.email &&
+            response.password === acess.password
+          ) {
+            setSucess(`Usuário ${response.username} logado!`);
+            setTimeout(() => {
+              setOpenSnackbar(true);
+              setSucess(null);
+              navigate(
+                response.role === "basic"
+                  ? "/client"
+                  : response.role === "admin"
+                  ? "/client"
+                  : response.role === "master"
+                  ? "/master"
+                  : "/login"
+              );
+            }, 3000);
+          } else {
+            setError("Erro na senha!");
+            setTimeout(() => {
+              setError(null);
+            }, 5000);
+          }
+        } else {
+          setError("Acesso negado!");
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+        }
+      })
+      .catch((error) => {
+        if (error && error.response.status) {
+          setError("Falha ao logar!");
+          setOpenSnackbar(true);
+          setTimeout(() => {
+            setOpenSnackbar(false);
+            setError(null);
+          }, 5000);
+        }
+      });
   };
 
   return (
@@ -62,10 +131,22 @@ function LoginView({ setIsLogged }) {
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <TextField id="username" label="E-mail" variant="outlined" />
+            <TextField
+              id="email"
+              name="email"
+              label="E-mail"
+              variant="outlined"
+              onChange={handleChange}
+            />
             <br />
 
-            <TextField id="password" label="Senha" variant="outlined" />
+            <TextField
+              id="password"
+              name="password"
+              label="Senha"
+              variant="outlined"
+              onChange={handleChange}
+            />
             <br />
             <div
               style={{
@@ -109,6 +190,9 @@ function LoginView({ setIsLogged }) {
               </div>
             </div>
           </form>
+          {!!error && <span style={{ color: "red" }}>{`${error}`}</span>}
+
+          {!!sucess && <span style={{ color: "green" }}>{`${sucess}`}</span>}
         </Paper>
       </div>
       <div

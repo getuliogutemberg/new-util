@@ -1,3 +1,5 @@
+import React from "react";
+
 const FieldColumn = ({
   children,
   flexGrow = 1,
@@ -13,12 +15,10 @@ const FieldColumn = ({
         alignItems: "stretch",
         // width: `calc(100vw - ${isLogged ? "65px" : "0px"})`,
         background: "#e7ebf0",
-        height: `calc(100vh - 65px - ${
-          showFieldRecomendations ? "50px" : "0px"
-        })`,
+        height: `calc(100vh - ${showFieldRecomendations ? "115px" : "65px"})`,
         overflow: "auto",
         flexWrapX: "wrap",
-        overflow: "auto",
+
         // gap: "10px",
         boxSizing: "border-box",
         // margin: "10px",

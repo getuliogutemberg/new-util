@@ -1,8 +1,8 @@
 import * as React from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,7 +16,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
+import { useSpring, useTransition, animated } from "@react-spring/web";
 import { useLocation, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
@@ -46,7 +46,7 @@ import avatar from "../Assets/Images/avatar.png";
 
 const drawerWidth = 300;
 
-const openedMixin = (theme: Theme): CSSObject => ({
+const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -55,7 +55,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
   overflowX: "hidden",
 });
 
-const closedMixin = (theme: Theme): CSSObject => ({
+const closedMixin = (theme) => ({
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -76,13 +76,13 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
+// interface AppBarProps extends MuiAppBarProps {
+//   open?: boolean;
+// }
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
+})(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -251,6 +251,21 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
     setOpenInForma(false);
   };
 
+  const [shaking, setShaking] = React.useState(false);
+
+  // const transitions = useTransition(shaking, () => ({
+  //   from: { transform: "translate3d(0, 0, 0)" },
+  //   enter: { transform: "translate3d(0, 0, 0)" },
+  //   leave: { transform: "translate3d(0, 0, 0)" },
+  //   config: { duration: 100 },
+  // }));
+
+  const shakeAnimation = useSpring({
+    transform: shaking
+      ? "translate3d(-0px, 0, 0) rotate(-15deg)"
+      : "translate3d(-0px, 0, 0) rotate(+15deg)",
+  });
+
   return (
     <Box
       sx={{
@@ -298,7 +313,16 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                       ...(open && { display: "none" }),
                     }}
                   >
-                    <LockOpenIcon />
+                    {/* <LockOpenIcon /> */}
+                    <div>
+                      <animated.div
+                        style={shakeAnimation}
+                        onMouseEnter={() => setShaking(true)}
+                        onMouseLeave={() => setShaking(false)}
+                      >
+                        <LockOpenIcon />
+                      </animated.div>
+                    </div>
                   </IconButton>
                 </Tooltip>
               </Link>

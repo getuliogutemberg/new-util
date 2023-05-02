@@ -12,7 +12,7 @@ import AnaliticsView from "../pages/AnaliticsView.jsx";
 import HomologationView from "../pages/HomologationView.jsx";
 import SetupView from "../pages/SetupView.jsx";
 import TestsView from "../pages/TestsView.jsx";
-import TemplateView from "../pages/TemplateView.tsx";
+import TemplateView from "../pages/TemplateView.jsx";
 import { Navigate } from "react-router-dom";
 function AppRoutes() {
   const [isLogged, setIsLogged] = useState();
@@ -55,9 +55,11 @@ function AppRoutes() {
         exact
         path="/client"
         element={
-          <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-            <ClientView isLogged={isLogged} />
-          </TemplateView>
+          <Protected isLogged={isLogged}>
+            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
+              <ClientView />
+            </TemplateView>
+          </Protected>
         }
       />
       <Route
@@ -100,7 +102,7 @@ function AppRoutes() {
         element={
           <Protected isLogged={isLogged}>
             <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-              <RecomendationView isLogged={isLogged} />
+              <RecomendationView />
             </TemplateView>
           </Protected>
         }

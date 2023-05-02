@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import Albums from "./Albums.js";
+import Albums from "./Albums.jsx";
 import { useState } from "react";
+import React from "react";
 
 const ArtistPage = ({ artist }) => {
   return (

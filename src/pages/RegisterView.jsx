@@ -12,6 +12,7 @@ function RegisterView({ setIsLogged }) {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
+  const [sucess, setSucess] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(true);
 
   const handleChange = (event) => {
@@ -25,6 +26,12 @@ function RegisterView({ setIsLogged }) {
       .post("http://localhost:3001/users", user)
       .then((response) => {
         console.log(response.data);
+        setSucess(`Usuário ${response.data.username} cadastrado com sucesso!`);
+        setTimeout(() => {
+          setOpenSnackbar(true);
+          setSucess(null);
+          navigate("/login");
+        }, 3000);
       })
       .catch((error) => {
         if (error.response.status) {
@@ -155,15 +162,7 @@ function RegisterView({ setIsLogged }) {
           </form>
           {!!error && <span style={{ color: "red" }}>{`${error}`}</span>}
 
-          {/* {openSnackbar && (
-          <Snackbar
-            anchorOrigin={("bottom", "center")}
-            open={true}
-            onClose={() => setOpenSnackbar(false)}
-            message={error}
-            key={"bottom + center"}
-          />
-        )} */}
+          {!!sucess && <span style={{ color: "green" }}>{`${sucess}`}</span>}
         </Paper>
       </div>
       <div

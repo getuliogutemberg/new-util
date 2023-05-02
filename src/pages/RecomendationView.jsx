@@ -7,10 +7,10 @@ import FieldRecomendations from "../components/FieldRecomendations";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function RecomendationView({ isLogged }) {
+function RecomendationView({ showRecomendation = false }) {
   const layout = {
     FieldRecomendations: {
-      hidden: false,
+      hidden: showRecomendation,
       flexGrow: 1,
     },
     FieldView: {
@@ -28,10 +28,6 @@ function RecomendationView({ isLogged }) {
   };
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    !isLogged && navigate("/");
-  });
 
   return (
     <div
@@ -61,7 +57,7 @@ function RecomendationView({ isLogged }) {
           </FieldRow>
         </FieldColumn>
         <FieldColumn
-          flexGrow={120}
+          flexGrow={10}
           hidden={layout.FieldColumn.hidden}
           showFieldRecomendations={!layout.FieldRecomendations.hidden}
         >
