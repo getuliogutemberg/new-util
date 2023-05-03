@@ -5,7 +5,7 @@ import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
 import FieldRecomendations from "../components/FieldRecomendations";
 import Dygraph from "dygraphs";
-import myData from "../Assets/Graphs/sample-data.json";
+import myData from "../Assets/Graphs/sample-data";
 
 import { useState } from "react";
 
@@ -94,7 +94,7 @@ function ClientView({}) {
               {/* <MyGraph /> */}
             </FieldCard>
             <FieldCard flexGrow={4} hidden={false}>
-              <MyGraph />
+              {/* <MyGraph /> */}
             </FieldCard>
             <FieldCard flexGrow={1} hidden={false}>
               {/* <MyGraph /> */}

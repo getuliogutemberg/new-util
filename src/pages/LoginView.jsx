@@ -16,71 +16,72 @@ function LoginView({ setIsLogged }) {
     const { name, value } = event.target;
     setAcess({ ...acess, [name]: value });
   };
- // 
+  //
   const [error, setError] = useState(null);
   const [sucess, setSucess] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(true);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     setIsLogged(true);
-    axios
-      .get("http://localhost:3001/users")
-      .then((response) => {
-        var filtrado = response.data.filter(function (obj) {
-          return obj.email == acess.email;
-        });
-        return filtrado;
-      })
-      .then((response) => {
-        console.log(acess);
-        console.log(response);
-        var acess = response.filter(function (obj) {
-          return obj.password == acess.password;
-        });
-        console.log(acess);
-        if (response.lenght > 0 && acess !== {}) {
-          if (
-            response.email === acess.email &&
-            response.password === acess.password
-          ) {
-            setSucess(`Usuário ${response.username} logado!`);
-            setTimeout(() => {
-              setOpenSnackbar(true);
-              setSucess(null);
-              navigate(
-                response.role === "basic"
-                  ? "/client"
-                  : response.role === "admin"
-                  ? "/client"
-                  : response.role === "master"
-                  ? "/master"
-                  : "/login"
-              );
-            }, 3000);
-          } else {
-            setError("Erro na senha!");
-            setTimeout(() => {
-              setError(null);
-            }, 5000);
-          }
-        } else {
-          setError("Acesso negado!");
-          setTimeout(() => {
-            setError(null);
-          }, 5000);
-        }
-      })
-      .catch((error) => {
-        if (error && error.response.status) {
-          setError("Falha ao logar!");
-          setOpenSnackbar(true);
-          setTimeout(() => {
-            setOpenSnackbar(false);
-            setError(null);
-          }, 5000);
-        }
-      });
+    navigate("/client");
+    // event.preventDefault();
+    // axios
+    //   .get("http://localhost:3001/users")
+    //   .then((response) => {
+    //     var filtrado = response.data.filter(function (obj) {
+    //       return obj.email == acess.email;
+    //     });
+    //     return filtrado;
+    //   })
+    //   .then((response) => {
+    //     console.log(acess);
+    //     console.log(response);
+    //     var acess = response.filter(function (obj) {
+    //       return obj.password == acess.password;
+    //     });
+    //     console.log(acess);
+    //     if (response.lenght > 0 && acess !== {}) {
+    //       if (
+    //         response.email === acess.email &&
+    //         response.password === acess.password
+    //       ) {
+    //         setSucess(`Usuário ${response.username} logado!`);
+    //         setTimeout(() => {
+    //           setOpenSnackbar(true);
+    //           setSucess(null);
+    //           navigate(
+    //             response.role === "basic"
+    //               ? "/client"
+    //               : response.role === "admin"
+    //               ? "/client"
+    //               : response.role === "master"
+    //               ? "/master"
+    //               : "/login"
+    //           );
+    //         }, 3000);
+    //       } else {
+    //         setError("Erro na senha!");
+    //         setTimeout(() => {
+    //           setError(null);
+    //         }, 5000);
+    //       }
+    //     } else {
+    //       setError("Acesso negado!");
+    //       setTimeout(() => {
+    //         setError(null);
+    //       }, 5000);
+    //     }
+    // })
+    // .catch((error) => {
+    //   if (error && error.response.status) {
+    //     setError("Falha ao logar!");
+    //     setOpenSnackbar(true);
+    //     setTimeout(() => {
+    //       setOpenSnackbar(false);
+    //       setError(null);
+    //     }, 5000);
+    //   }
+    // });
   };
 
   return (
