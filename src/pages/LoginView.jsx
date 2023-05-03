@@ -16,7 +16,7 @@ function LoginView({ setIsLogged }) {
     const { name, value } = event.target;
     setAcess({ ...acess, [name]: value });
   };
-
+ // 
   const [error, setError] = useState(null);
   const [sucess, setSucess] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(true);
