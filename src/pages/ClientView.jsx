@@ -39,6 +39,35 @@ function ClientView() {
 
 
   const option = {
+    tooltip: {
+      
+        
+    
+      
+      trigger: 'axis',
+      axisPointer: {
+          type: 'cross',
+          crossStyle: {
+              color: '#999'
+          }
+      }
+  },
+    grid: {
+      top: 50,
+      left: 50,
+      right: 50,
+      bottom: 30,
+      // height: '100vh',
+    },
+    toolbox: {
+      
+      feature: {
+          // dataView: {show: true, readOnly: false},
+          magicType: {show: true, type: ['line', 'bar']},
+          restore: {show: true},
+          saveAsImage: {show: true}
+      }
+  },
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -59,14 +88,7 @@ function ClientView() {
   
   
   return (
-    <div
-      style={{
-        height: `calc(100vh - 65px)`,
-        overflow: "auto",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div>
       <FieldRecomendations
         
         flexGrow={layout.FieldRecomendations.flexGrow}
@@ -85,44 +107,77 @@ function ClientView() {
             <FieldCard flexGrow={0} hidden={0} title="Eficiencia instantaneo" subtitle="">
             
               <ReactEcharts option={{
+                grid: {
+                  top: 50,
+                  left: 50,
+                  right: 50,
+                  bottom: 30,
+                  
+                  
+                },
+                toolbox: {
+                  feature: {
+                      // dataView: {show: true, readOnly: false},
+                      // magicType: {show: true, type: ['line', 'bar']},
+                      // restore: {show: true},
+                      saveAsImage: {show: true}
+                  }
+              },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      data:['unit']
+      // ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
     yAxis: {
       type: 'value'
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
+        data: [50],
         type: 'gauge'
       }
     ]
-  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:`22vh`}} />
+  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex' ,height:'22vh'}} />
 
             </FieldCard>
 
-            <FieldCard flexGrow={2} hidden={0} title="Eficiencia" subtitle="">
-            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:`22vh`}}/>
+            <FieldCard flexGrow={1} hidden={0} title="Eficiencia" subtitle="">
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',height:`22vh`,margin:'0px',padding:'0px'}}/>
 
             </FieldCard>
 
             <FieldCard flexGrow={0} hidden={false} title="Recomendacões" subtitle="" >
             <ReactEcharts option={{
+              grid: {
+                top: 0,
+                left: 50,
+                right: 50,
+                bottom: 30,
+                // height:'22vh',
+                
+              },
+              toolbox: {
+                feature: {
+                    // dataView: {show: true, readOnly: false},
+                    // magicType: {show: true, type: ['line', 'bar']},
+                    // restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      data: ['Alarmado','NaoAlarmado']
     },
     yAxis: {
       type: 'value'
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
+        data: [120, 200],
         type: 'pie'
       }
     ]
-  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:`22vh`}}/>
+  }} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',height:'22vh'}}/>
            
              
 
@@ -132,86 +187,39 @@ function ClientView() {
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
-            <FieldCard flexGrow={1} hidden={false} title="Consumo" subtitle="">
-              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:`22vh`}}/>
+            <FieldCard flexGrow={1} hidden={false} title="Consumo" subtitle="" >
+              <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
               
-              </div>
               </FieldCard>
-            <FieldCard flexGrow={1} hidden={false} title="Producao" subtitle="" > <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:`22vh`}}/>
+            <FieldCard flexGrow={1} hidden={false} title="Producao" subtitle="" > 
 
-              </div>
-              </FieldCard>
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+            
+            </FieldCard>
           </FieldRow>
+          
           <FieldRow
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
             <FieldCard flexGrow={1} hidden={false} title="Variaveis 1" subtitle=""> 
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-            <ReactEcharts option={{
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'line'
-      }
-    ]
-  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:'20vh'}}/>
 
-              </div>
+
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+           
               </FieldCard>
             <FieldCard flexGrow={1} hidden={false} title="Variaveis 2" subtitle="">
-              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              <ReactEcharts option={{
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'line'
-      }
-    ]
-  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:`22vh`}}/>
-
-              </div>
+                        <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+             
               </FieldCard>
             <FieldCard flexGrow={1} hidden={false} title="Variaveis 3" subtitle=""> 
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-            <ReactEcharts option={{
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'line'
-      }
-    ]
-  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex',height:'20vh'}}/>
-
-              </div>
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',margin:'0px',flexDirection:'column',padding:'0px',height:'22vh'}}/>
+            
               </FieldCard>
           </FieldRow>
         </FieldColumn>
       </FieldView>
-    </div>
+      </div>
   );
 }
 

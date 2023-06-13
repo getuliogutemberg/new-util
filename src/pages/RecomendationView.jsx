@@ -31,6 +31,58 @@ function RecomendationView({ showRecomendation = false }) {
   };
 
   // const navigate = useNavigate();
+  const option = {
+    tooltip: {
+      
+        
+    
+      
+      trigger: 'axis',
+      axisPointer: {
+          type: 'cross',
+          crossStyle: {
+              color: '#999'
+          }
+      }
+  },
+    
+    grid: {
+      top: 50,
+      left: 50,
+      right: 50,
+      bottom: 30,
+      // height: '100vh',
+    },
+    toolbox: {
+      
+      feature: {
+          // dataView: {show: true, readOnly: false},
+          magicType: {show: true, type: ['line', 'bar']},
+          restore: {show: true},
+          saveAsImage: {show: true}
+      }
+  },
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      axisPointer: {
+              
+        snap: true,
+        label: {
+          show: true,
+          
+        },}
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'line'
+      }
+    ]
+  }; 
 
   return (
     <div
@@ -122,76 +174,31 @@ function RecomendationView({ showRecomendation = false }) {
             <FieldCard flexGrow={1} hidden={false} title="Variavel 1" subtitle="" >
               
               
-                <div style={{display:"flex",flexGrow:1,margin:"10px",flexDirection:"column"}}>
+                
               
 
-                <ReactEcharts option={{
-              
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'line'
-      }
-    ]
-  }} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
-                </div>
+                <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+                
                
             </FieldCard>
             <FieldCard flexGrow={1} hidden={false} title="Variavel 2" subtitle="" >
               
               
-              <div style={{display:"flex",flexGrow:1,margin:"10px",flexDirection:"column"}}>
+             
             
 
-              <ReactEcharts option={{
-            
-  xAxis: {
-    type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  },
-  yAxis: {
-    type: 'value'
-  },
-  series: [
-    {
-      data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'line'
-    }
-  ]
-}} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
-              </div>
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+              
              
           </FieldCard>
           <FieldCard flexGrow={1} hidden={false} title="Variavel 3" subtitle="" >
               
               
-              <div style={{display:"flex",flexGrow:1,margin:"10px",flexDirection:"column"}}>
+              
             
 
-              <ReactEcharts option={{
-            
-  xAxis: {
-    type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  },
-  yAxis: {
-    type: 'value'
-  },
-  series: [
-    {
-      data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'line'
-    }
-  ]
-}} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
-              </div>
+          <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+              
              
           </FieldCard>
                 </Stack>
@@ -200,26 +207,11 @@ function RecomendationView({ showRecomendation = false }) {
               
             <FieldCard flexGrow={1} hidden={false} title="Eficiencia" subtitle="">
               
-              <div style={{display:"flex",flexGrow:1,margin:"10px",flexDirection:"column"}}>
+              
               
 
-                <ReactEcharts option={{
-              
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'line'
-      }
-    ]
-  }} style={{flexGrow:0,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
-                </div>
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'stretch',alignItems:'center',display:'flex',flexDirection:'column',margin:'0px',padding:'0px',height:'22vh'}}/>
+                
                 
              
             </FieldCard>
