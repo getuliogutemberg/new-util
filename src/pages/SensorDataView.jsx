@@ -9,6 +9,7 @@ import { useEffect ,useState} from "react";
 import { DatePicker ,Space,Select,Checkbox,List,Skeleton, Divider,Button} from 'antd';
 import { Typography } from "@mui/material";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import ReactEcharts from "echarts-for-react";
 
 
 function SensorDataView({ showRecomendation = false }) {
@@ -192,7 +193,31 @@ function SensorDataView({ showRecomendation = false }) {
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
-            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} title="Consulta" subtitle="Dia/Mes/Ano - Dia/Mes/Ano" >
+              
+              
+              <div style={{display:"flex",flexGrow:1,margin:"10px",flexDirection:"column"}}>
+            
+
+              <ReactEcharts option={{
+            
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [120, 200, 150, 80, 70, 110, 130],
+      type: 'line'
+    }
+  ]
+}} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+              </div>
+             
+          </FieldCard>
           </FieldRow>
         </FieldColumn>
       </FieldView>
