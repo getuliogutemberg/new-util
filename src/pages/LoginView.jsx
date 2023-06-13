@@ -24,7 +24,7 @@ function LoginView({ setIsLogged }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLogged(true);
-    navigate("/client");
+    navigate("/setClient");
     // axios
     //   .get("http://localhost:3001/users")
     //   .then((response) => {
@@ -124,13 +124,13 @@ function LoginView({ setIsLogged }) {
               alt="Logo"
               className="Logo"
               loading="lazy"
-              width={"300px"}
+              width={"200px"}
             />
           </div>
           <h1>Login</h1>
           <form
             onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: "flex", flexDirection: "column",gap:'10px' }}
           >
             <TextField
               id="email"
@@ -139,7 +139,7 @@ function LoginView({ setIsLogged }) {
               variant="outlined"
               onChange={handleChange}
             />
-            <br />
+            
 
             <TextField
               id="password"
@@ -148,7 +148,7 @@ function LoginView({ setIsLogged }) {
               variant="outlined"
               onChange={handleChange}
             />
-            <br />
+            
             <div
               style={{
                 display: "flex",
@@ -198,7 +198,7 @@ function LoginView({ setIsLogged }) {
       </div>
       <div
         style={{
-          display: "flex",
+          display: "none",
           justifyContent: "center",
           alignItems: "end",
 
@@ -206,7 +206,7 @@ function LoginView({ setIsLogged }) {
           width: "50%",
           minWidth: "500px",
 
-          display: "flex",
+          
           zIndex: "-1",
         }}
       >

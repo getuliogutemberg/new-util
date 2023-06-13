@@ -70,8 +70,8 @@ function HomeView({ isLogged }) {
         }}
       >
         <img
-          src={robot}
-          alt="robot"
+          src={''}
+          alt=""
           style={{
             marginRight: "40%",
             marginLeft: "auto",
@@ -92,7 +92,7 @@ function HomeView({ isLogged }) {
           padding: "20px",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center",background:'',width:'100vw' }}>
           <img
             src={logo}
             alt="Logo"
@@ -101,46 +101,8 @@ function HomeView({ isLogged }) {
             width={"300px"}
           />
         </div>
-        <h1>GPTalking 1.0</h1>
-        <p>Bem-vindo à página principal da aplicação!</p>
-
-        <div style={{ maxHeight: "400px", overflow: "auto" }}>
-          {" "}
-          <p>
-            Esta aplicação foi desenvolvida em React e tem como objetivo
-            permitir que o usuário faça solicitações por voz e receba respostas
-            faladas em resposta a essas solicitações.
-          </p>
-          <p>
-            Para isso, a aplicação tem um componente React que usa a biblioteca
-            &nbsp;
-            <Link to={"https://webspeechrecognition.com/"} target="_blank">
-              Web Speech Recognition
-            </Link>{" "}
-            para ouvir o áudio do usuário e converter a fala em texto. Em
-            seguida, a aplicação usa um serviço de processamento de linguagem
-            natural para interpretar a solicitação do usuário e determinar a
-            melhor resposta.
-          </p>
-          <p>
-            Uma vez que a aplicação tenha determinado a resposta, ela usa uma
-            biblioteca de síntese de fala, como a biblioteca{" "}
-            <Link
-              to={
-                "https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API"
-              }
-              target="_blank"
-            >
-              SpeechSynthesis
-            </Link>{" "}
-            do JavaScript, para gerar uma resposta falada para o usuário.
-          </p>
-          <p>
-            Essa aplicação lida com desafios de reconhecimento de voz,
-            processamento de linguagem natural e síntese de fala. Além disso,
-            garante a fácilidade e seguranca para os usuários.
-          </p>
-        </div>
+        
+        
 
         {!isLogged && (
           <Link
@@ -151,7 +113,7 @@ function HomeView({ isLogged }) {
           >
             <Button
               variant="contained"
-              style={{ maxWidth: "max-content", background: "#0c5e5a" }}
+              style={{ maxWidth: "max-content", background: "#0c5e5a",position:'absolute',bottom:'0px' }}
             >
               Solicitar acesso!
             </Button>

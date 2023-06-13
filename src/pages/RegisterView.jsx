@@ -85,13 +85,13 @@ function RegisterView({ setIsLogged }) {
               alt="Logo"
               className="Logo"
               loading="lazy"
-              width={"300px"}
+              width={"200px"}
             />
           </div>
           <h1>Registro</h1>
           <form
             onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: "flex", flexDirection: "column",gap:'10px' }}
           >
             <TextField
               id="username"
@@ -100,7 +100,7 @@ function RegisterView({ setIsLogged }) {
               variant="outlined"
               onChange={handleChange}
             />
-            <br />
+            
             <TextField
               id="email"
               name="email"
@@ -108,7 +108,7 @@ function RegisterView({ setIsLogged }) {
               variant="outlined"
               onChange={handleChange}
             />
-            <br />
+            
 
             <TextField
               id="password"
@@ -167,7 +167,7 @@ function RegisterView({ setIsLogged }) {
       </div>
       <div
         style={{
-          display: "flex",
+          display: "none",
           justifyContent: "center",
           alignItems: "end",
 
@@ -175,7 +175,7 @@ function RegisterView({ setIsLogged }) {
           width: "50%",
           minWidth: "500px",
 
-          display: "flex",
+          
           zIndex: "-1",
         }}
       >

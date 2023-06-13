@@ -1,6 +1,6 @@
 {
-  "name": "gptalking",
-  "version": "0.1.0",
+  "name": "util4.0",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -16,15 +16,18 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.6",
+    "bootstrap": "^5.3.0",
     "chart.js": "^4.2.1",
     "d3": "^7.8.4",
     "dygraphs": "^2.2.1",
+    "echarts-for-react": "^3.0.2",
     "express-jwt": "^8.4.1",
     "jsonwebtoken": "^9.0.0",
     "mui": "^0.0.1",
     "mysql2": "^3.2.4",
     "notistack": "^3.0.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-router-dom": "^6.10.0",
@@ -39,7 +42,7 @@
   "scripts": {
     "start": "react-scriptsstart",
     "start:linux": "react-scripts start",
-    "build": "react-scriptsbuild",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

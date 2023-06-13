@@ -29,6 +29,8 @@ import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 import MemoryIcon from "@mui/icons-material/Memory";
 import LineAxisIcon from "@mui/icons-material/LineAxis";
 import SettingsIcon from "@mui/icons-material/Settings";
+import logo from "../Assets/Images/logo.png";
+import Button from '@mui/material/Button';
 
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -43,6 +45,12 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import Collapse from "@mui/material/Collapse";
 import Tooltip from "@mui/material/Tooltip";
 import avatar from "../Assets/Images/avatar.png";
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const drawerWidth = 300;
 
@@ -68,9 +76,11 @@ const closedMixin = (theme) => ({
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
+
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
+  
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
@@ -147,17 +157,17 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
   const linksTopBar = isLogged
     ? [
         {
-          icon: <ChatBubbleOutlineIcon style={{ color: "white" }} />,
+          icon: <ChatBubbleOutlineIcon style={{ color: "black" }} />,
           text: "Feedback",
           link: `/feedback`,
         },
         {
-          icon: <HelpOutlineIcon style={{ color: "white" }} />,
+          icon: <HelpOutlineIcon style={{ color: "black" }} />,
           text: "Faq",
           link: "/faq",
         },
         {
-          icon: <ExitToAppIcon style={{ color: "white" }} />,
+          icon: <ExitToAppIcon style={{ color: "black" }} />,
           text: "Sair",
           link: "/",
         },
@@ -177,18 +187,23 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
 
   const linksDrawer = isLogged
     ? [
+      {
+        icon: <FactoryIcon  />,
+        text: "Painel de Clientes",
+        link: "/setClient",
+      },
         {
-          icon: <MonitorIcon style={{ color: "black" }} />,
+          icon: <MonitorIcon  />,
           text: "Monitoramento",
-          link: "/client",
+          link: "/monitoring",
         },
         {
-          icon: <WarningAmberIcon style={{ color: "black" }} />,
+          icon: <WarningAmberIcon />,
           text: "Histórico de Recomendações",
           link: "/alerts",
         },
         {
-          icon: <ContentPasteSearchIcon style={{ color: "black" }} />,
+          icon: <ContentPasteSearchIcon  />,
           text: "Histoticos de Sensores",
           link: "/sensor-data",
         },
@@ -204,7 +219,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
   const linksInForma = isLogged
     ? [
         {
-          icon: <FactoryIcon style={{ color: "black" }} />,
+          icon: <FactoryIcon  />,
           text: "Painel inForma",
           link: "/master",
         },
@@ -214,22 +229,22 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
   const subLinksInforma = isLogged
     ? [
         {
-          icon: <MemoryIcon style={{ color: "black" }} />,
+          icon: <MemoryIcon />,
           text: "Análises",
           link: "/analitics",
         },
         {
-          icon: <LineAxisIcon style={{ color: "black" }} />,
+          icon: <LineAxisIcon  />,
           text: "Homologação",
           link: "/homologation",
         },
         {
-          icon: <SettingsIcon style={{ color: "black" }} />,
+          icon: <SettingsIcon />,
           text: "Configuracões",
           link: "/setup",
         },
         {
-          icon: <EmojiObjectsIcon style={{ color: "black" }} />,
+          icon: <EmojiObjectsIcon  />,
           text: "Tela de testes",
           link: "/tests",
         },
@@ -243,8 +258,12 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
   const handleDrawerClose = () => {
     setOpen(false);
     setOpenInForma(false);
+
+
   };
 
+
+  
   const Logout = () => {
     setIsLogged(false);
     setOpen(false);
@@ -266,6 +285,25 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
       : "translate3d(-0px, 0, 0) rotate(+15deg)",
   });
 
+  const [openFeedback, setOpenFeedback] = React.useState(false);
+  const [openFaq, setOpenFaq] = React.useState(false);
+
+  const handleClickOpenFeedback = () => {
+    setOpenFeedback(true);
+  };
+
+  const handleCloseFeedback = () => {
+    setOpenFeedback(false);
+  };
+
+  const handleClickOpenFaq = () => {
+    setOpenFaq(true);
+  };
+
+  const handleCloseFaq = () => {
+    setOpenFaq(false);
+  };
+
   return (
     <Box
       sx={{
@@ -278,39 +316,46 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
     >
       <CssBaseline />
 
-      <AppBar position="fixed" open={open} style={{ background: "#0c5e5a" }}>
+      <AppBar position="fixed" open={open} style={{ background: "#fff" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ display: "flex", flexDirection: "row" ,paddingLeft:!open ?"60px":"0px",gap:"20px",alignItems:'center'}}>
+          <div style={{ display: "flex", flexDirection: "row" ,zIndex:1,minHeight:"64px",left:0,position:"fixed",top:0 ,background:isLogged ? "#124251":'white',}}>
             {isLogged ? (
-              <Tooltip title={"Menu"} placement="right">
+              <Tooltip title={"Menu"} placement="right" >
                 <IconButton
-                  color="inherit"
+                  
                   aria-label="open drawer"
                   onClick={handleDrawerOpen}
                   edge="start"
                   sx={{
-                    marginRight: 5,
+                    
+                    
+                    borderRadius:'0%',
+                    background:"#124251",
+                    width:"76px",
+                    
                     ...(open && { display: "none" }),
                   }}
                 >
-                  <MenuIcon />
+                  <MenuIcon sx={{ color: "white" ,marginLeft:'10px' }}/>
                 </IconButton>
               </Tooltip>
             ) : (
               <Link
                 key={"Login"}
-                color="inherit"
+                color="black"
                 to={"/login"}
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <Tooltip title={"Login"} placement="right">
                   <IconButton
-                    color="inherit"
+                     
                     aria-label="open drawer"
                     edge="start"
                     sx={{
-                      marginRight: 5,
-                      ...(open && { display: "none" }),
+                      minHeight:"64px",
+                      width:"76px",
+                      ...(open && { display: "none"}),
                     }}
                   >
                     {/* <LockOpenIcon /> */}
@@ -320,13 +365,22 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                         onMouseEnter={() => setShaking(true)}
                         onMouseLeave={() => setShaking(false)}
                       >
-                        <LockOpenIcon />
+                        <LockOpenIcon sx={{ color: "black" }}/>
                       </animated.div>
                     </div>
                   </IconButton>
                 </Tooltip>
               </Link>
-            )}
+            )}</div>
+
+            {isLogged && <img
+              src={logo}
+              alt="Logo"
+              className="Logo"
+              loading="lazy"
+              width={"60px"}
+              
+            />}
 
             <Breadcrumbs
               separator={<NavigateNextIcon fontSize="small" />}
@@ -335,17 +389,17 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
               {links.map(({ link, label, id }) => (
                 <Link
                   key={id}
-                  color="inherit"
+                  color="Black"
                   to={link}
-                  style={{ textDecoration: "none", color: "white" }}
+                  style={{ textDecoration: "none", color: "black"  }}
                 >
                   <Typography
                     variant="h6"
                     noWrap
                     component="div"
                     sx={{
-                      marginRight: 5,
-                      ...(!open && { paddingTop: 0.5, color: "white" }),
+                      
+                      ...(!open && {  color: "black" }),
                     }}
                   >
                     {label}
@@ -355,41 +409,72 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
             </Breadcrumbs>
           </div>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-            <List>
+            <List style={{ display: "flex", gap: "20px",cursor:"pointer" }}>
               {linksTopBar.map(({ text, icon, link }) =>
                 isLogged && text === "Sair" ? null : (
-                  <Tooltip title={text} placement="top-end">
-                    <Link
-                      to={`${link}`}
-                      style={{
-                        textDecoration: "none",
-                        color: "white",
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        padding: "6px",
-                      }}
-                    >
-                      {icon}
-                      {/* {icon} */}
-                      {/* <ListItemIcon
-              sx={{
+                  text === "Feedback" ? (
+                    <><Tooltip title={text} placement="top-end" onClick={handleClickOpenFeedback}>
+                  {icon}
+                </Tooltip><Dialog open={openFeedback} onClose={handleCloseFeedback}>
+                    <DialogTitle>Feedback</DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                      Como tem sido sua experiência com a plataforma?
+                      </DialogContentText>
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        
+                        label=" "
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                        id="outlined-multiline-static"
+          
+                        multiline
+                        // rows={4}
+                        // defaultValue="Default Value"
+                      />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseFeedback}>Cancelar</Button>
+                      <Button onClick={handleCloseFeedback}>Enviar</Button>
+                    </DialogActions>
+                  </Dialog></>
                 
-              }}
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-              </ListItemIcon> */}
-                    </Link>
-                  </Tooltip>
+                ): text === "Faq" ? (
+                  <><Tooltip title={text} placement="top-end" onClick={handleClickOpenFaq}>
+                  {icon}
+                </Tooltip>
+                <Dialog fullScreen open={openFaq} onClose={handleCloseFaq}>
+                    <DialogTitle>Faq</DialogTitle>
+                    <DialogContent>
+                      {/* <DialogContentText>
+                      Como tem sido sua experiência com a plataforma?
+                      </DialogContentText> */}
+                      {/* <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                      /> */}
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseFaq}>Fechar</Button>
+                      {/* <Button onClick={handleCloseFaq}>Enviar</Button> */}
+                    </DialogActions>
+                  </Dialog></>
+                ):null
+                
                 )
               )}
             </List>
             {isLogged && (
               <Tooltip title={"Npme do Usuário"} placement="top-end">
-                <Avatar alt="Npme do Usuário" src={avatar} />
+                <Avatar alt="Npme do Usuário" src={avatar} style={{cursor:"pointer" }} />
               </Tooltip>
             )}
             <List>
@@ -401,7 +486,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                       to={`${link}`}
                       style={{
                         textDecoration: "none",
-                        color: "white",
+                        color: "black",
                         minHeight: 48,
                         justifyContent: open ? "initial" : "center",
                         padding: "6px",
@@ -411,18 +496,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                       }}
                     >
                       {icon}
-                      {/* {icon} */}
-                      {/* <ListItemIcon
-                sx={{
-                  
-                }}
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                </ListItemIcon> */}
+                     
                     </Link>
                   </Tooltip>
                 ) : null
@@ -434,7 +508,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
 
       {isLogged && (
         <Drawer variant="permanent" open={open}>
-          <DrawerHeader>
+          {/* <DrawerHeader style={{ background: "#124251" }}>
             <Tooltip title={"Fechar"}>
               <IconButton
                 onClick={() => {
@@ -451,14 +525,36 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
             </Tooltip>
           </DrawerHeader>
 
-          <Divider />
-          <List>
+          <Divider /> */}
+          <List style={{ background: "#124251" ,height:'100vh'}}>
+          <Tooltip title={"Fechar"} placement="right">
+              <IconButton
+                onClick={() => {
+                  setOpen(false);
+                  setOpenInForma(false);
+                }}
+                sx={{
+                  marginBottom:'50px',
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  
+                  color: "white" 
+                }}
+              >
+                {theme.direction === "rtl" ? (
+                  <MenuIcon />
+                ) : (
+                  <MenuIcon />
+                )}
+              </IconButton>
+            </Tooltip>
             {linksDrawer.map(({ text, icon, link }) => (
               <Tooltip title={!open && text} placement="right">
                 <Link
                   key={text}
                   to={`${link}`}
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{ textDecoration: "none", color: "white"  }}
                 >
                   <ListItem key={text} disablePadding sx={{ display: "block" }}>
                     <ListItemButton
@@ -467,6 +563,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                         minHeight: 48,
                         justifyContent: open ? "initial" : "center",
                         px: 2.5,
+                        color: "white" 
                       }}
                     >
                       <ListItemIcon
@@ -474,6 +571,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "white" 
                         }}
                       >
                         {icon}
@@ -489,12 +587,13 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
               </Tooltip>
             ))}
 
+
             {linksInForma.map(({ text, icon, link }) => (
               <Tooltip title={!open && text} placement="right">
                 <Link
                   key={text}
                   to={`${link}`}
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{ textDecoration: "none", color: "white" }}
                 >
                   <ListItem key={text} disablePadding sx={{ display: "block" }}>
                     <ListItemButton
@@ -502,6 +601,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                         minHeight: 48,
                         justifyContent: open ? "initial" : "center",
                         px: 2.5,
+                        color: "white" 
                       }}
                       onClick={handleClick}
                     >
@@ -510,6 +610,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "white" 
                         }}
                       >
                         {icon}
@@ -533,13 +634,13 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                             <Link
                               key={text}
                               to={`${link}`}
-                              style={{ textDecoration: "none", color: "black" }}
+                              style={{ textDecoration: "none", color: "white"  }}
                             >
                               <ListItemButton
                                 sx={{ pl: 4 }}
                                 onClick={handleDrawerClose}
                               >
-                                <ListItemIcon>{icon}</ListItemIcon>
+                                <ListItemIcon sx={{ color: "white" }}>{icon}</ListItemIcon>
                                 <ListItemText primary={text} />
                               </ListItemButton>
                             </Link>
@@ -552,16 +653,12 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                 </Link>
               </Tooltip>
             ))}
-          </List>
-
-          {/* <Divider /> */}
-          <List>
             {subLinksInforma.map(({ text, icon, link }) => (
               <Tooltip title={!open && text} placement="right">
                 <Link
                   key={text}
                   to={`${link}`}
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{ textDecoration: "none", color: "white" }}
                 >
                   <ListItem key={text} disablePadding sx={{ display: "block" }}>
                     <ListItemButton
@@ -577,6 +674,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "white" 
                         }}
                       >
                         {icon}
@@ -591,6 +689,11 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
               </Tooltip>
             ))}
           </List>
+
+          {/* <Divider /> */}
+          {/* <List style={{ background: "red" ,height:'0vh',justifyContent:'end'}}>
+            
+          </List> */}
         </Drawer>
       )}
 

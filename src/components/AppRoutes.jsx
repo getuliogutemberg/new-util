@@ -4,6 +4,8 @@ import HomeView from "../pages/HomeView.jsx";
 import SensorDataView from "../pages/SensorDataView.jsx";
 import RecomendationView from "../pages/RecomendationView.jsx";
 import ClientView from "../pages/ClientView.jsx";
+import SetClientView from "../pages/SetClientView.jsx";
+import SetTwinView from "../pages/SetTwinView.jsx";
 import AdminView from "../pages/AdminView.jsx";
 import MasterView from "../pages/MasterView.jsx";
 import LoginView from "../pages/LoginView.jsx";
@@ -53,11 +55,46 @@ function AppRoutes() {
 
       <Route
         exact
-        path="/client"
+        path="/setClient"
+        element={
+          <Protected isLogged={isLogged}>
+            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
+              <SetClientView />
+            </TemplateView>
+          </Protected>
+        }
+      />
+
+<Route
+        exact
+        path="/setTwin"
+        element={
+          <Protected isLogged={isLogged}>
+            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
+              <SetTwinView />
+            </TemplateView>
+          </Protected>
+        }
+      />
+
+      <Route
+        exact
+        path="/monitoring"
         element={
           <Protected isLogged={isLogged}>
             <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
               <ClientView />
+            </TemplateView>
+          </Protected>
+        }
+      />
+      <Route
+        exact
+        path="/alerts"
+        element={
+          <Protected isLogged={isLogged}>
+            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
+              <RecomendationView />
             </TemplateView>
           </Protected>
         }
@@ -96,17 +133,7 @@ function AppRoutes() {
           </Protected>
         }
       />
-      <Route
-        exact
-        path="/alerts"
-        element={
-          <Protected isLogged={isLogged}>
-            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-              <RecomendationView />
-            </TemplateView>
-          </Protected>
-        }
-      />
+      
       <Route
         exact
         path="/analitics"

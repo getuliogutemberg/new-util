@@ -4,50 +4,14 @@ import FieldRow from "../components/FieldRow";
 import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
 import FieldRecomendations from "../components/FieldRecomendations";
-// import Dygraph from "dygraphs";
-// import myData from "../Assets/Graphs/sample-data.json";
+import ReactEcharts from "echarts-for-react";
 
 import { useState } from "react";
 
-// const MyGraph = () => {
-//   useEffect(() => {
-//     const messages = myData;
-//     let data = "";
 
-//     messages.data.forEach((response) => {
-//       data += response[1] + "," + response[3] + "\n";
-//     });
-
-//     new Dygraph("graphContainer", data, {
-//       title: "Pressure Transient(s)",
-//       // titleHeight: 32,
-//       ylabel: "Pressure (meters)",
-//       xlabel: "Time",
-//       gridLineWidth: "0.1",
-//       width: "600px",
-//       // height: 250,
-//       connectSeparatedPoints: true,
-//       axes: { x: { axisLabelFontSize: 9 }, y: { axisLabelFontSize: 9 } },
-//       labels: ["Date", "Tampines Ave10 (Stn 40)"],
-//     });
-//   }, []);
-
-//   return (
-//     <div
-//       style={{
-//         height: "100%",
-//         display: "flex",
-//         justifyContenct: "center",
-//         alignItems: "center",
-//         width: "100%",
-//       }}
-//     >
-//       <div id="graphContainer" />
-//     </div>
-//   );
-// };
 
 function ClientView({}) {
+  
   const [layout, setLayout] = useState({
     FieldRecomendations: {
       hidden: false,
@@ -66,7 +30,8 @@ function ClientView({}) {
       flexGrow: 1,
     },
   });
-
+  
+  
   return (
     <div
       style={{
@@ -79,7 +44,7 @@ function ClientView({}) {
       <FieldRecomendations
         flexGrow={layout.FieldRecomendations.flexGrow}
         hidden={layout.FieldRecomendations.hidden}
-      />{" "}
+      />
       <FieldView flexGrow={1} hidden={layout.FieldView.hidden}>
         <FieldColumn
           flexGrow={layout.FieldColumn.flexGrow}
@@ -90,30 +55,58 @@ function ClientView({}) {
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
-            <FieldCard flexGrow={1} hidden={false}>
-              {/* <MyGraph /> */}
+            <FieldCard flexGrow={1} hidden={false} title="Eficiencia instantaneo" subtitle="">
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico eficiencia instantaneo
+              </div>
+
             </FieldCard>
-            <FieldCard flexGrow={4} hidden={false}>
-              {/* <MyGraph /> */}
+
+            <FieldCard flexGrow={4} hidden={false} title="Eficiencia" subtitle="">
+             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico eficiencia historico
+              </div>
             </FieldCard>
-            <FieldCard flexGrow={1} hidden={false}>
-              {/* <MyGraph /> */}
+
+            <FieldCard flexGrow={1} hidden={false} title="Recomendacões" subtitle="">
+              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico recomendacoes percentual do dia
+              </div>
             </FieldCard>
           </FieldRow>
           <FieldRow
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
-            <FieldCard flexGrow={1} hidden={false} />
-            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} title="Consumo" subtitle="">
+              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico consumo de gas
+              </div>
+              </FieldCard>
+            <FieldCard flexGrow={1} hidden={false} title="Producao" subtitle="" > <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico producao 
+              </div>
+              </FieldCard>
           </FieldRow>
           <FieldRow
             flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
-            <FieldCard flexGrow={1} hidden={false} />
-            <FieldCard flexGrow={1} hidden={false} />
-            <FieldCard flexGrow={1} hidden={false} />
+            <FieldCard flexGrow={1} hidden={false} title="Variaveis 1" subtitle=""> 
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico variaveis 1
+              </div>
+              </FieldCard>
+            <FieldCard flexGrow={1} hidden={false} title="Variaveis 2" subtitle="">
+              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico variaveis 2
+              </div>
+              </FieldCard>
+            <FieldCard flexGrow={1} hidden={false} title="Variaveis 3" subtitle=""> 
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              Grafico variaveis 3
+              </div>
+              </FieldCard>
           </FieldRow>
         </FieldColumn>
       </FieldView>
