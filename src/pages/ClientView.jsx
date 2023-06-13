@@ -78,30 +78,23 @@ function ClientView() {
           showFieldRecomendations={!layout.FieldRecomendations.hidden}
         >
           <FieldRow
-            flexGrow={1}
+            flexGrow={layout.FieldRow.flexGrow}
             hidden={layout.FieldRow.hidden}
           >
-            <FieldCard flexGrow={1} hidden={false} title="Eficiencia instantaneo" subtitle="">
-            <div style={{display: 'flex', justifyItems: 'center', alignItems: 'center',background:'red',flexGrow:1}}>
-              {/* Grafico eficiencia historico */}
-              <ReactEcharts option={option} style={{display:'flex',flexGrow:1}} />
-              </div>
+            <FieldCard flexGrow={1} hidden={0} title="Eficiencia instantaneo" subtitle="">
+            
+              <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
 
             </FieldCard>
 
-            <FieldCard flexGrow={2} hidden={false} title="Eficiencia" subtitle="">
-             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              {/* Grafico eficiencia historico */}
-              <ReactEcharts option={option} style={{display:'flex',flexGrow:1}} />
-              </div>
+            <FieldCard flexGrow={2} hidden={0} title="Eficiencia" subtitle="">
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
 
             </FieldCard>
 
-            <FieldCard flexGrow={1} hidden={false} title="Recomendacões" subtitle="">
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              {/* Grafico eficiencia historico */}
-              <ReactEcharts option={option} style={{display:'flex',flexGrow:1}} />
-              </div>
+            <FieldCard flexGrow={1} hidden={false} title="Recomendacões" subtitle="" >
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+           
              
 
             </FieldCard>
@@ -112,11 +105,13 @@ function ClientView() {
           >
             <FieldCard flexGrow={1} hidden={false} title="Consumo" subtitle="">
               <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico consumo de gas
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+              
               </div>
               </FieldCard>
             <FieldCard flexGrow={1} hidden={false} title="Producao" subtitle="" > <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico producao 
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+
               </div>
               </FieldCard>
           </FieldRow>
@@ -126,17 +121,20 @@ function ClientView() {
           >
             <FieldCard flexGrow={1} hidden={false} title="Variaveis 1" subtitle=""> 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico variaveis 1
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+
               </div>
               </FieldCard>
             <FieldCard flexGrow={1} hidden={false} title="Variaveis 2" subtitle="">
               <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico variaveis 2
+              <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+
               </div>
               </FieldCard>
             <FieldCard flexGrow={1} hidden={false} title="Variaveis 3" subtitle=""> 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico variaveis 3
+            <ReactEcharts option={option} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
+
               </div>
               </FieldCard>
           </FieldRow>
