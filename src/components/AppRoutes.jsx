@@ -101,6 +101,17 @@ function AppRoutes() {
       />
       <Route
         exact
+        path="/sensor-data"
+        element={
+          <Protected isLogged={isLogged}>
+            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
+              <SensorDataView />
+            </TemplateView>
+          </Protected>
+        }
+      />
+      <Route
+        exact
         path="/admin"
         element={
           <Protected isLogged={isLogged}>
@@ -122,17 +133,7 @@ function AppRoutes() {
         }
       />
 
-      <Route
-        exact
-        path="/sensor-data"
-        element={
-          <Protected isLogged={isLogged}>
-            <TemplateView isLogged={isLogged} setIsLogged={setIsLogged}>
-              <SensorDataView />
-            </TemplateView>
-          </Protected>
-        }
-      />
+      
       
       <Route
         exact
