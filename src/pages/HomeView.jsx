@@ -6,7 +6,7 @@ import CloudOffIcon from "@mui/icons-material/CloudOff";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockIcon from "@mui/icons-material/Lock";
 import CloseIcon from "@mui/icons-material/Close";
-import robot from "../Assets/Images/robot2.png";
+// import robot from "../Assets/Images/robot2.png";
 import { Button } from "@mui/material";
 import logo from "../Assets/Images/logo.png";
 

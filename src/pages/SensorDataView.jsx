@@ -5,8 +5,8 @@ import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
 import FieldRecomendations from "../components/FieldRecomendations";
 import { useEffect ,useState} from "react";
-import { useNavigate } from "react-router-dom";
-import { DatePicker ,Space,Select,Checkbox,List,Skeleton,Avatar, Divider,Button} from 'antd';
+// import { useNavigate } from "react-router-dom";
+import { DatePicker ,Space,Select,Checkbox,List,Skeleton, Divider,Button} from 'antd';
 import { Typography } from "@mui/material";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -53,7 +53,7 @@ function SensorDataView({ showRecomendation = false }) {
     },
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleChange = (value) => {
     console.log(`selected ${value}`);
   };

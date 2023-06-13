@@ -1,18 +1,22 @@
-import React, { useEffect } from "react";
+import React ,{useState} from "react";
 import FieldCard from "../components/FieldCard";
 import FieldRow from "../components/FieldRow";
 import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
 import FieldRecomendations from "../components/FieldRecomendations";
+
+
+
+
 import ReactEcharts from "echarts-for-react";
 
-import { useState } from "react";
+// import { useState } from "react";
 
 
 
-function ClientView({}) {
+function ClientView() {
   
-  const [layout, setLayout] = useState({
+  const layout = {
     FieldRecomendations: {
       hidden: false,
       flexGrow: 1,
@@ -29,7 +33,29 @@ function ClientView({}) {
       hidden: false,
       flexGrow: 1,
     },
-  });
+  };
+
+  
+
+
+  const option = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar'
+      }
+    ]
+  }; 
+
+
+
   
   
   return (
@@ -45,33 +71,39 @@ function ClientView({}) {
         flexGrow={layout.FieldRecomendations.flexGrow}
         hidden={layout.FieldRecomendations.hidden}
       />
-      <FieldView flexGrow={1} hidden={layout.FieldView.hidden}>
+      <FieldView flexGrow={layout.FieldView} hidden={layout.FieldView.hidden}>
         <FieldColumn
           flexGrow={layout.FieldColumn.flexGrow}
           hidden={layout.FieldColumn.hidden}
           showFieldRecomendations={!layout.FieldRecomendations.hidden}
         >
           <FieldRow
-            flexGrow={layout.FieldRow.flexGrow}
+            flexGrow={1}
             hidden={layout.FieldRow.hidden}
           >
             <FieldCard flexGrow={1} hidden={false} title="Eficiencia instantaneo" subtitle="">
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico eficiencia instantaneo
+            <div style={{display: 'flex', justifyItems: 'center', alignItems: 'center',background:'red',flexGrow:1}}>
+              {/* Grafico eficiencia historico */}
+              <ReactEcharts option={option} style={{display:'flex',flexGrow:1}} />
               </div>
 
             </FieldCard>
 
-            <FieldCard flexGrow={4} hidden={false} title="Eficiencia" subtitle="">
+            <FieldCard flexGrow={2} hidden={false} title="Eficiencia" subtitle="">
              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico eficiencia historico
+              {/* Grafico eficiencia historico */}
+              <ReactEcharts option={option} style={{display:'flex',flexGrow:1}} />
               </div>
+
             </FieldCard>
 
             <FieldCard flexGrow={1} hidden={false} title="Recomendacões" subtitle="">
-              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
-              Grafico recomendacoes percentual do dia
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',background:'',flexGrow:1}}>
+              {/* Grafico eficiencia historico */}
+              <ReactEcharts option={option} style={{display:'flex',flexGrow:1}} />
               </div>
+             
+
             </FieldCard>
           </FieldRow>
           <FieldRow

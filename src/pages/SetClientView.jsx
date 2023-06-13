@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FieldCard from "../components/FieldCard";
 import FieldRow from "../components/FieldRow";
 import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
-import FieldRecomendations from "../components/FieldRecomendations";
-import { useLocation, Link } from "react-router-dom";
+
+import {  Link } from "react-router-dom";
 import logoAsa from  '../Assets/Images/logo_asa.png'
 
 
-import { useState } from "react";
+
 import { Paper } from "@mui/material";
 
 
 
-function SetClientView({}) {
-  const [layout, setLayout] = useState({
+function SetClientView() {
+  const layout = {
     FieldRecomendations: {
       hidden: false,
       flexGrow: 1,
@@ -31,7 +31,7 @@ function SetClientView({}) {
       hidden: false,
       flexGrow: 1,
     },
-  });
+  };
 
   return (
     <div

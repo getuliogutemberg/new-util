@@ -3,11 +3,11 @@ import FieldCard from "../components/FieldCard";
 import FieldRow from "../components/FieldRow";
 import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
-import FieldRecomendations from "../components/FieldRecomendations";
-import { useState } from "react";
+// import FieldRecomendations from "../components/FieldRecomendations";
+// import { useState } from "react";
 
 function MasterView() {
-  const [layout, setLayout] = useState({
+  const layout ={
     FieldRecomendations: {
       hidden: true,
       flexGrow: 1,
@@ -24,7 +24,7 @@ function MasterView() {
       hidden: false,
       flexGrow: 1,
     },
-  });
+  };
 
   return (
     <div

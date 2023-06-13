@@ -5,7 +5,7 @@ import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
 // import FieldRecomendations from "../components/FieldRecomendations";
 import {  Link } from "react-router-dom";
-import logoAsa from  '../Assets/Images/logo_asa.png'
+// import logoAsa from  '../Assets/Images/logo_asa.png'
 import ReactEcharts from "echarts-for-react";
 import { useState } from "react";
 import { Paper, Typography } from "@mui/material";
@@ -39,7 +39,7 @@ function SetTwinView(props) {
 
 
   
-  const [value, setValue] = useState(0);
+  const value = 0;
   const [loading, setLoading] = useState(true);
   const option = {
     height: "250px",
@@ -221,7 +221,7 @@ function SetTwinView(props) {
     }
   }, [value]);
 
-  const [layout, setLayout] = useState({
+  const layout = {
     FieldRecomendations: {
       hidden: false,
       flexGrow: 1,
@@ -238,8 +238,7 @@ function SetTwinView(props) {
       hidden: false,
       flexGrow: 1,
     },
-  });
-
+  };
   return (
     <div
       style={{

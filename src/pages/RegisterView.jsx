@@ -13,7 +13,7 @@ function RegisterView({ setIsLogged }) {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const [sucess, setSucess] = useState(null);
-  const [openSnackbar, setOpenSnackbar] = useState(true);
+  // const [openSnackbar, setOpenSnackbar] = useState(true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

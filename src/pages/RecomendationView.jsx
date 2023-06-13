@@ -4,8 +4,8 @@ import FieldRow from "../components/FieldRow";
 import FieldColumn from "../components/FieldColumn";
 import FieldView from "../components/FieldView";
 import FieldRecomendations from "../components/FieldRecomendations";
-import { useEffect ,useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useState} from "react";
+// import { useNavigate } from "react-router-dom";
 import { Alert, AlertTitle, Stack } from "@mui/material";
 
 function RecomendationView({ showRecomendation = false }) {
@@ -29,7 +29,7 @@ function RecomendationView({ showRecomendation = false }) {
     },
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div

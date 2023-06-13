@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { Button, Paper } from "@mui/material";
 import logo from "../Assets/Images/logo.png";
 import robot from "../Assets/Images/robot2.png";
-import axios from "axios";
+// import axios from "axios";
 import Typography from "@mui/material/Typography";
 
 function LoginView({ setIsLogged }) {
@@ -17,9 +17,9 @@ function LoginView({ setIsLogged }) {
     setAcess({ ...acess, [name]: value });
   };
 
-  const [error, setError] = useState(null);
-  const [sucess, setSucess] = useState(null);
-  const [openSnackbar, setOpenSnackbar] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [sucess, setSucess] = useState(null);
+  // const [openSnackbar, setOpenSnackbar] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -103,7 +103,7 @@ function LoginView({ setIsLogged }) {
           width: "50%",
           minWidth: "500px",
 
-          display: "flex",
+          
         }}
       >
         <Paper
@@ -191,9 +191,9 @@ function LoginView({ setIsLogged }) {
               </div>
             </div>
           </form>
-          {!!error && <span style={{ color: "red" }}>{`${error}`}</span>}
+          {/* {!!error && <span style={{ color: "red" }}>{`${error}`}</span>}
 
-          {!!sucess && <span style={{ color: "green" }}>{`${sucess}`}</span>}
+          {!!sucess && <span style={{ color: "green" }}>{`${sucess}`}</span>} */}
         </Paper>
       </div>
       <div
