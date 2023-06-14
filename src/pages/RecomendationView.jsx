@@ -8,6 +8,7 @@ import { useState} from "react";
 // import { useNavigate } from "react-router-dom";
 import { Alert, AlertTitle, Stack } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
+import { Typography } from "antd";
 
 function RecomendationView({ showRecomendation = false }) {
   const [ selected, setSelected ] = useState({title:'',subtitle:'',description:'',recomendation:'',eficiencia:'',variaveis:''});
@@ -111,13 +112,49 @@ function RecomendationView({ showRecomendation = false }) {
             
           >
             <FieldCard flexGrow={1} hidden={false} title="Recomendações" subtitle=""  >
-              <Stack spacing={1} style={{ margin: "10px" ,minWidth:'400px'}}>
+              <Stack spacing={1} style={{ margin: "10px" ,minWidth:'400px'}} flexGrow={1}>
               
+              {[{
+              variant:"filled",
+              severity:"error",
+              title:'Recomendacao',
+              subtitle:'subtitulo 1',
+              description:'descricao 1',
+              recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+              eficiencia:{value:'eficiencia',
+                          time:''},
+              variaveis:[
+                {value:'100',
+              time:''},
+                {value:'20',
+              time:''},
+                {value:'30',
+              time:''}]
+              },
+              {
+                variant:"filled",
+                severity:"success",
+                title:'Fim da recomendacao',
+                subtitle:'subtitulo 2',
+                description:'descricao 2',
+                recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
 
-                <Alert variant="filled" severity="error"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:'Titulo',subtitle:'dadasd',description:'description',recomendation:'recomendation',eficiencia:'eficiencia',variaveis:'variaveis'})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
-                <Alert variant="filled" severity="error"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:'Titulo',subtitle:'dadasd',description:'description',recomendation:'recomendation',eficiencia:'eficiencia',variaveis:'variaveis'})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
-                <Alert variant="filled" severity="error"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:'Titulo',subtitle:'dadasd',description:'description',recomendation:'recomendation',eficiencia:'eficiencia',variaveis:'variaveis'})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
-                <Alert variant="filled" severity="error"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:' ',subtitle:' ',description:' ',recomendation:' '})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
+                eficiencia:{value:'eficiencia',
+                            time:''},
+                variaveis:[
+                  {value:'100',
+                time:''},
+                  {value:'20',
+                time:''},
+                  {value:'30',
+                time:''}]
+                }].map((element)=>{
+                return <Alert variant={element.variant} severity={element.severity}  style={{cursor:"pointer"}} onClick={()=>setSelected(element)}><AlertTitle>{element.title}</AlertTitle> {element.description}</Alert>
+              }) }
+                {/* <Alert variant="filled" severity="error"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:'Titulo',subtitle:'dadasd',description:'description',recomendation:'recomendation',eficiencia:'eficiencia',variaveis:'variaveis'})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
+                <Alert variant="filled" severity="warning"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:'Titulo',subtitle:'dadasd',description:'description',recomendation:'recomendation',eficiencia:'eficiencia',variaveis:'variaveis'})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
+                <Alert variant="filled" severity="success"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:'Titulo',subtitle:'dadasd',description:'description',recomendation:'recomendation',eficiencia:'eficiencia',variaveis:'variaveis'})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
+                <Alert variant="filled" severity="info"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:' ',subtitle:' ',description:' ',recomendation:' '})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
                
                
                 <Alert variant="filled" severity="success"  style={{cursor:"pointer"}}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
@@ -148,7 +185,7 @@ function RecomendationView({ showRecomendation = false }) {
                 <Alert variant="filled" severity="error"  style={{cursor:"pointer"}} onClick={()=>setSelected({title:' ',subtitle:' ',description:' ',recomendation:' '})}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
                
                
-                <Alert variant="filled" severity="success"  style={{cursor:"pointer"}}><AlertTitle>Titulo</AlertTitle> dadasd</Alert>
+                <Alert variant="filled" severity="success"  style={{cursor:"pointer"}}><AlertTitle>Titulo</AlertTitle> dadasd</Alert> */}
               </Stack>
             </FieldCard>
           </FieldRow>
@@ -164,8 +201,10 @@ function RecomendationView({ showRecomendation = false }) {
             hidden={layout.FieldRow.hidden}
           >
             <FieldCard flexGrow={1} hidden={false} title={selected.title} subtitle={selected.subtitle}><div style={{display:"flex",flexGrow:1}}>
-            <div style={{display:"flex",flexGrow:1,margin:"10px"}}>{selected.description}</div>
-            <div style={{display:"flex",flexGrow:1,margin:"10px"}}>{selected.recomendation}</div></div>
+            <div style={{display:"flex",flexGrow:1,margin:"10px"}}>
+              <Typography>{selected.description}</Typography>
+            </div>
+            <div style={{display:"flex",flexGrow:1,margin:"10px",maxWidth:'50%',flexWrap:'wrap',overflow:'auto',height:'20vh'}}>{selected.recomendation && selected.recomendation.map((element)=>{return <FieldCard style={{padding:'10px',}} title={element.sensor} subtitle={element.unit}><Typography.Title  level={3} style={{ margin: 10 , fontWeight:''}}>{element.value} - {element.recomendation}</Typography.Title></FieldCard> })}</div></div>
             </FieldCard>
           </FieldRow>
 
