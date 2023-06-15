@@ -700,6 +700,8 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
       <Box
         component="main"
         sx={{
+          display: "flex",
+          flexDirection: "column",
           flexGrow: 1,
           overflow: "hidden",
           p: 0,

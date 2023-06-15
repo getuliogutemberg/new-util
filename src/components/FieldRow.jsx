@@ -1,15 +1,19 @@
 import React from "react";
 
-const FieldRow = ({ children, flexGrow = 1, hidden = false }) => {
+const FieldRow = ({ children, flexGrow, hidden = false ,height='100%' }) => {
   return (
     <div
       style={{
         display: !hidden ? "flex" : "none",
-        flexWrap: "wrap",
-        justifyContent: "space-center",
+        flexDirection: "row",
+
+        // flexWrap: "wrap",
+        // justifyContent: "space-center",
         flexGrow: flexGrow,
-        boxSizing: "border-box",
-        alignItems: "stretch",
+        height,
+        // boxSizing: "border-box",
+        // alignItems: "stretch",
+        width: `100%`,
       }}
     >
       {children}

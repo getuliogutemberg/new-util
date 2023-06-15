@@ -10,19 +10,20 @@ const FieldColumn = ({
     <div
       style={{
         display: !hidden ? "flex" : "none",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "stretch",
-        // width: `calc(100vw - ${isLogged ? "65px" : "0px"})`,
-        background: "#e7ebf0",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        maxWidth: `100%`,
+        // background: "red",
+        maxHeight: '100vh',
         height: `calc(100vh - ${showFieldRecomendations ? "115px" : "65px"})`,
-        overflow: "auto",
-        flexWrapX: "wrap",
+        overflowX: "auto",
+        flexWrap: "wrap",
 
         // gap: "10px",
-        boxSizing: "border-box",
+        // boxSizing: "border-box",
         // margin: "10px",
-        flexGrow: flexGrow,
+        // flexGrow: flexGrow,
       }}
     >
       {children}

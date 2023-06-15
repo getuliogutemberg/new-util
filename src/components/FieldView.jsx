@@ -1,23 +1,24 @@
 import React from "react";
 
-const FieldColumn = ({ children, flexGrow = 1, hidden = false }) => {
+const FieldView = ({ children, flexGrow, hidden = false }) => {
   return (
     <div
       style={{
-        display: !hidden ? "flex" : "none",
-        flexDirection: "row",
+        // display: !hidden ? "flex" : "none",
+        flexDirection: "column",
         // justifyContent: "space-between",
         // alignItems: "stretch",
-        // width: `calc(100vw - ${isLogged ? "65px" : "0px"})`,
+        width: `50vw`,
         background: "#e7ebf0",
-        // height: "93.3vh",
+        height: "100%",
         overflow: "auto",
-        flexWrapx: "wrap",
-        // overflow: "auto",
+        // flexWrapx: "wrap",
+        // overflowY: "auto",
         // gap: "10px",
         boxSizing: "border-box",
         // margin: "10px",
-        flexGrow: flexGrow,
+        flexGrow: flexGrow
+        
       }}
     >
       {children}
@@ -25,4 +26,4 @@ const FieldColumn = ({ children, flexGrow = 1, hidden = false }) => {
   );
 };
 
-export default FieldColumn;
+export default FieldView;
