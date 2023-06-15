@@ -79,7 +79,7 @@ function ClientView() {
     ]
   )
   const [graphs, setGraphs] = React.useState([
-    { grow:1,
+    { grow:0,
       title:"teste1",
       subtitle:"",
       gemeo:1 ,
@@ -93,15 +93,56 @@ function ClientView() {
       apiAddress:"http://localhost.com" ,
       sensores:[],
     },
-    { grow:1,
+    { grow:0,
       title:"teste3",
       subtitle:"",
       gemeo:1 ,
       apiAddress:"http://localhost.com" ,
       sensores:[],
     },
+    { grow:1,
+      title:"teste4",
+      subtitle:"",
+      gemeo:1 ,
+      apiAddress:"http://localhost.com" ,
+      sensores:[],
+    },
     
-    
+    { grow:1,
+      title:"teste5",
+      subtitle:"",
+      gemeo:1 ,
+      apiAddress:"http://localhost.com" ,
+      sensores:[],
+    },
+    { grow:1,
+      title:"teste6",
+      subtitle:"",
+      gemeo:1 ,
+      apiAddress:"http://localhost.com" ,
+      sensores:[],
+    },
+    { grow:1,
+      title:"teste7",
+      subtitle:"",
+      gemeo:1 ,
+      apiAddress:"http://localhost.com" ,
+      sensores:[],
+    },
+    { grow:1,
+      title:"teste8",
+      subtitle:"",
+      gemeo:1 ,
+      apiAddress:"http://localhost.com" ,
+      sensores:[],
+    },
+    { grow:1,
+      title:"teste9",
+      subtitle:"",
+      gemeo:1 ,
+      apiAddress:"http://localhost.com" ,
+      sensores:[],
+    },
   ]);
   
   const layout = {
@@ -133,18 +174,65 @@ function ClientView() {
   
   
   return (
-    <div style={{ maxHeight: "100%" ,overflowY:'scroll',display:graphs.length > 3 ? '' : 'flex',flexDirection:'column'}}>
-    <FieldRecomendations
-        
-        flexGrow={layout.FieldRecomendations.flexGrow}
-        hidden={layout.FieldRecomendations.hidden}
-        recomendations ={recomendations}
-    />
-    {graphs.map((graph)=>{
-      return <GraphchartCard chartType='bar' flexGrow={graph.grow} title={graph.title} subtitle={graph.subtitle} gemeo={graph.gemeo} apiAddress={graph.apiAddress} sensores={graph.sensores}/>
-    })}
-    
+    <div style={{ maxHeight: "100%" ,overflowY:'scroll'}}>
+      <FieldRecomendations
+      
+      flexGrow={layout.FieldRecomendations.flexGrow}
+      hidden={layout.FieldRecomendations.hidden}
+      recomendations ={recomendations}
+      />
+      <div style={{display:'flex',flexDirection:'row'}}>
+
+        {graphs.map((graph)=>{
+          return  <GraphchartCard 
+          key={graph.title}
+          chartType='bar' 
+          flexGrow={graph.grow} 
+          title={graph.title} 
+          subtitle={graph.subtitle} 
+          gemeo={graph.gemeo}
+          apiAddress={graph.apiAddress} 
+          sensores={graph.sensores}/>
+          
+        }).splice(0,3)}
+  
       </div>
+      <div style={{display:'flex',flexDirection:'row'}}>
+
+        {graphs.map((graph)=>{
+          return  <GraphchartCard 
+          key={graph.title}
+          chartType='bar' 
+          flexGrow={graph.grow} 
+          title={graph.title} 
+          subtitle={graph.subtitle} 
+          gemeo={graph.gemeo}
+          apiAddress={graph.apiAddress} 
+          sensores={graph.sensores}/>
+      
+      
+        }).splice(4,2)}
+
+      </div>
+      <div style={{display:'flex',flexDirection:'row'}}>
+
+        {graphs.map((graph)=>{
+          return  <GraphchartCard 
+          key={graph.title}
+          chartType='bar' 
+          flexGrow={graph.grow} 
+          title={graph.title} 
+          subtitle={graph.subtitle} 
+          gemeo={graph.gemeo}
+          apiAddress={graph.apiAddress} 
+          sensores={graph.sensores}/>
+          
+          
+        }).splice(6,3)}
+
+      </div>
+    
+    </div>
   );
 }
 

@@ -1,133 +1,45 @@
-import React from "react";
+import React,{useState} from "react";
 import FieldCard from "../components/FieldCard";
-import FieldRow from "../components/FieldRow";
-import FieldColumn from "../components/FieldColumn";
-import FieldView from "../components/FieldView";
-
-import {  Link } from "react-router-dom";
-import logoAsa from  '../Assets/Images/logo_asa.png'
-
-
-
-import { Paper } from "@mui/material";
-
-
+import { ClientCard } from '@getuliogutemberg/react-hub'
+import ChartServices from "../services/ChartServices";
 
 function SetClientView() {
-  const layout = {
-    FieldRecomendations: {
-      hidden: false,
-      flexGrow: 1,
-    },
-    FieldView: {
-      hidden: false,
-      flexGrow: 1,
-    },
-    FieldColumn: {
-      hidden: false,
-      flexGrow: 1,
-    },
-    FieldRow: {
-      hidden: false,
-      flexGrow: 1,
-    },
-  };
+  const [clients, setClients] = useState([]);
+  React.useEffect(() => {
+      ChartServices.get_groups().then((response) => {
+        setClients(response.map(obj => {
+          let logo = null;
+          if (obj.name === "Asa") {
+            logo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUpUtluYxaw5hQdJvhd9taZN2PawkDEWIo2ZHkpA9dDvnQ6BRxajuvdlmWBSHvCG0AM6A&usqp=CAU";
+          } else if (obj.name === "Vivix") {
+            logo = "https://abividro.org.br/wp-content/uploads/2017/11/marca_vivix3-1.jpg";
+          } else if (obj.name === "Roca") {
+            logo = "https://logos-world.net/wp-content/uploads/2023/01/Roca-Logo.png";
+          }
+        
+          return {
+            id: obj.id,
+            name: obj.name,
+            logo: logo
+          };
+        }));
+      })
+},[])
+  
 
   return (
-    <div
-      style={{
-        height: `calc(100vh - 65px)`,
-        overflow: "auto",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      {/* <FieldRecomendations
-        flexGrow={layout.FieldRecomendations.flexGrow}
-        hidden={layout.FieldRecomendations.hidden}
-      />{" "} */}
-      <FieldView flexGrow={1} hidden={layout.FieldView.hidden}>
-        <FieldColumn
-          flexGrow={layout.FieldColumn.flexGrow}
-          hidden={layout.FieldColumn.hidden}
-          showFieldRecomendations={layout.FieldRecomendations.hidden}
-        >
-          <FieldRow
-            flexGrow={layout.FieldRow.flexGrow}
-            hidden={layout.FieldRow.hidden}
-          >
-            <FieldCard flexGrow={1} hidden={false} title="Painel de Clientes" subtitle="" >
-              {/* <MyGraph /> */}
+    <div style={{ maxHeight: "100%" ,overflowY:'scroll'}}>
+      
+      <FieldCard title="Painel de Clientes" subtitle="">
+      <div style={{display:'flex',flexDirection:'row',height:'calc(100vh - 120px)'}}>
+      
               
-              
-              <FieldRow >
-              <Link
-          key={"Login"}
-          color="black"
-          to={"/setTwin"}
-          style={{ margin: "10px", textDecoration: "none", color: "white",background: "" ,display:'flex',justifyContent:'start',maxHeight:"150px",maxWidth:'200px'}}
-        > <Paper >
+              { clients.length > 0 && clients.map((client)=>{
+                return <ClientCard name={client.name} id={client.id} logo={client.logo}/>
+              })}
              
-              <img
-              src={logoAsa}
-              alt="Logo"
-              className="Logo"
-              loading="lazy"
-              style={{maxHeight:"150px",maxWidth:'200px'}}
-              
-              
-              />
-              </Paper></Link>
-              <Link
-          key={"Login"}
-          color="black"
-          to={"/setTwin"}
-          style={{ margin: "10px", textDecoration: "none", color: "white",background: "" ,display:'flex',justifyContent:'start',maxHeight:"150px",maxWidth:'200px'}}
-        > <Paper >
-             
-              <img
-              src={logoAsa}
-              alt="Logo"
-              className="Logo"
-              loading="lazy"
-              style={{maxHeight:"150px",maxWidth:'200px'}}
-              
-              
-              />
-              </Paper></Link>
-
-              <Link
-          key={"Login"}
-          color="black"
-          to={"/setTwin"}
-          style={{ margin: "10px", textDecoration: "none", color: "white",background: "" ,display:'flex',justifyContent:'start',maxHeight:"150px",maxWidth:'200px'}}
-        > <Paper >
-             
-              <img
-              src={logoAsa}
-              alt="Logo"
-              className="Logo"
-              loading="lazy"
-              style={{maxHeight:"150px",maxWidth:'200px'}}
-              
-              
-              />
-              </Paper></Link></FieldRow>
-              
-            
-               
-                
-                
-               
-                
-              
-            </FieldCard>
-            
-          </FieldRow>
-          
-        </FieldColumn>
-        
-      </FieldView>
+      </div>
+      </FieldCard>
     </div>
   );
 }
