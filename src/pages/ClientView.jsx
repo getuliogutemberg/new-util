@@ -10,74 +10,74 @@ import { GraphchartCard , FieldRecomendations}  from '@getuliogutemberg/react-hu
 
 function ClientView() {
   const [recomendations,setRecomandations] = React.useState(
-    [
-      {
-        variant:"filled",
-        severity:"error",
-        title:'Recomendacao',
-        subtitle:'subtitulo 1',
-        description:'descricao 1',
-        recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-        eficiencia:{value:'eficiencia',
-                    time:''},
-        variaveis:[
-          {value:'100',
-        time:''},
-          {value:'20',
-        time:''},
-          {value:'30',
-        time:''}]
-        },
-        {
-          variant:"filled",
-          severity:"error",
-          title:'Recomendacao',
-          subtitle:'subtitulo 2',
-          description:'descricao 2',
-          recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-          eficiencia:{value:'eficiencia',
-                      time:''},
-          variaveis:[
-            {value:'100',
-          time:''},
-            {value:'20',
-          time:''},
-            {value:'30',
-          time:''}]
-          },{
-            variant:"filled",
-            severity:"error",
-            title:'Recomendacao',
-            subtitle:'subtitulo 3',
-            description:'descricao 3',
-            recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-            eficiencia:{value:'eficiencia',
-                        time:''},
-            variaveis:[
-              {value:'100',
-            time:''},
-              {value:'20',
-            time:''},
-              {value:'30',
-            time:''}]
-            },{
-              variant:"filled",
-              severity:"error",
-              title:'Recomendacao',
-              subtitle:'subtitulo 4',
-              description:'descricao 4',
-              recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-              eficiencia:{value:'eficiencia',
-                          time:''},
-              variaveis:[
-                {value:'100',
-              time:''},
-                {value:'20',
-              time:''},
-                {value:'30',
-              time:''}]
-              },
-    ]
+    // [
+    //   {
+    //     variant:"filled",
+    //     severity:"error",
+    //     title:'Recomendacao',
+    //     subtitle:'subtitulo 1',
+    //     description:'descricao 1',
+    //     recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //     eficiencia:{value:'eficiencia',
+    //                 time:''},
+    //     variaveis:[
+    //       {value:'100',
+    //     time:''},
+    //       {value:'20',
+    //     time:''},
+    //       {value:'30',
+    //     time:''}]
+    //     },
+    //     {
+    //       variant:"filled",
+    //       severity:"error",
+    //       title:'Recomendacao',
+    //       subtitle:'subtitulo 2',
+    //       description:'descricao 2',
+    //       recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //       eficiencia:{value:'eficiencia',
+    //                   time:''},
+    //       variaveis:[
+    //         {value:'100',
+    //       time:''},
+    //         {value:'20',
+    //       time:''},
+    //         {value:'30',
+    //       time:''}]
+    //       },{
+    //         variant:"filled",
+    //         severity:"error",
+    //         title:'Recomendacao',
+    //         subtitle:'subtitulo 3',
+    //         description:'descricao 3',
+    //         recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //         eficiencia:{value:'eficiencia',
+    //                     time:''},
+    //         variaveis:[
+    //           {value:'100',
+    //         time:''},
+    //           {value:'20',
+    //         time:''},
+    //           {value:'30',
+    //         time:''}]
+    //         },{
+    //           variant:"filled",
+    //           severity:"error",
+    //           title:'Recomendacao',
+    //           subtitle:'subtitulo 4',
+    //           description:'descricao 4',
+    //           recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //           eficiencia:{value:'eficiencia',
+    //                       time:''},
+    //           variaveis:[
+    //             {value:'100',
+    //           time:''},
+    //             {value:'20',
+    //           time:''},
+    //             {value:'30',
+    //           time:''}]
+    //           },
+    // ]
   )
   const [graphs, setGraphs] = React.useState([]);
   
@@ -127,13 +127,13 @@ function ClientView() {
 
 
   return (
-    <div style={{ maxHeight: "100%" ,overflowY:'hidden',display:'flex',flexDirection:'column',flexGrow:1}}>
-      <FieldRecomendations
-      
+    <div style={{ maxHeight: "100%" ,overflowY:'auto'}}>
+      {recomendations && <FieldRecomendations
+      services={ChartServices}
       
       recomendations ={recomendations}
-      />
-      <div style={{display:'flex',flexDirection:'column',flexWrap:'wrap',flexGrow:1}}>
+      />}
+      <div style={{}}>
 
 
         {graphs.map((graph)=>{
@@ -141,7 +141,7 @@ function ClientView() {
           
           
           return  (
-          <div style={{minWidth:'450px',flexGrow:1}}>
+          
           <GraphchartCard 
           services={ChartServices}
           key={graph.name}
@@ -152,12 +152,12 @@ function ClientView() {
           gemeo={graph.digital_twin_id}
           // apiAddress={graph.apiAddress} 
           sensores={[...graph.y_axis_1]}/>
-        </div>
+        
           )
 
           
           
-        }).splice(0,1)}
+        })}
   
       </div>
       {/* <div style={{display:'flex',flexDirection:'row'}}>
