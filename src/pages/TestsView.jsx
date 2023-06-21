@@ -12,7 +12,7 @@ import SnackBars from "../components/tests/SnackBars.tsx";
 import PrimarySearchAppBar from "../components/tests/PrimarySearchAppBar.tsx";
 // import RouterBreadcrumbs from "../components/tests/RouterBreadcrumbs.tsx";
 import FixedBottomNavigation from "../components/tests/FixedBottomNavigation.tsx";
-import ServerSidePersistence from "../components/tests/ServerSidePersistence.tsx";
+// import ServerSidePersistence from "../components/tests/ServerSidePersistence.tsx";
 import ReactSuspense from "../components/tests/ReactSuspense.jsx";
 import SpeechRecognitionComponentReq from "../components/tests/SpeechRecognitionComponentReq.jsx";
 import SpeechRecognitionComponentRes from "../components/tests/SpeechRecognitionComponentRes.jsx";
@@ -49,7 +49,7 @@ function TestsView({ isLogged }) {
       <br />
       <CircularIndeterminate />
       <br />
-      <ServerSidePersistence />
+      {/* <ServerSidePersistence /> */}
       <br />
       <SkeltonsVariants />
       <br />

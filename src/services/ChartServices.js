@@ -73,12 +73,6 @@ const ChartServices = {
         });
       },
 
-      getGraphsByTwin: async function (id) {
-        // console.log('/ditwins/graphs/',id)
-        const graphs = await axios.get(`http://localhost:3001/ditwins/graphs/${id}`);
-    
-        return graphs;
-      },
 
       getTwinInfoById: async function (id) {
         const twinName = await axios.get(`http://localhost:3001/ditwins/${id}`);

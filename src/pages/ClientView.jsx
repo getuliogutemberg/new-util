@@ -81,24 +81,7 @@ function ClientView() {
   )
   const [graphs, setGraphs] = React.useState([]);
   
-  const layout = {
-    FieldRecomendations: {
-      hidden: 0,
-      flexGrow: 1,
-    },
-    FieldView: {
-      hidden: 0,
-      flexGrow: 1,
-    },
-    FieldColumn: {
-      hidden: 0,
-      flexGrow: 1,
-    },
-    FieldRow: {
-      hidden: 0,
-      flexGrow: 1,
-    },
-  };
+ 
 
   React.useEffect(()=>{
 
@@ -106,7 +89,7 @@ function ClientView() {
       
     })
     const interval = setInterval(()=>{
-      ChartServices.getAlertsByTwin(1).then((res)=>{setRecomandations(res.data)
+      ChartServices.getAlertsByTwin(1).then((res)=>{setRecomandations(res)
       
       })
     },10000)
@@ -126,14 +109,15 @@ function ClientView() {
   },[])
 
 
-  return (
-    <div style={{ maxHeight: "100%" ,overflowY:'auto'}}>
+  return (<>
       {recomendations && <FieldRecomendations
       services={ChartServices}
       
       recomendations ={recomendations}
       />}
-      <div style={{}}>
+    <div style={{ maxHeight: "100%" ,overflowY:'auto'}}>
+      
+      
 
 
         {graphs.map((graph)=>{
@@ -159,54 +143,11 @@ function ClientView() {
           
         })}
   
-      </div>
-      {/* <div style={{display:'flex',flexDirection:'row'}}>
-
-        {graphs.map((graph)=>{
-          console.log([...graph.y_axis_1])
-
-          return  <GraphchartCard 
-          services={ChartServices}
-          key={graph.name}
-          chartType={graph.default_visualization} 
-          flexGrow={1} 
-          title={graph.name} 
-          subtitle={graph.subtitle} 
-          gemeo={graph.digital_twin_id}
-          // apiAddress={graph.apiAddress} 
-          sensores={[...graph.y_axis_1]}/>
-
-
-
       
       
-        }).splice(4,2)}
-
-      </div>
-      <div style={{display:'flex',flexDirection:'row'}}>
-
-        {graphs.map((graph)=>{
-                    console.log([...graph.y_axis_1])
-
-          return  <GraphchartCard 
-          services={ChartServices}
-          key={graph.name}
-          chartType={graph.default_visualization} 
-          flexGrow={1} 
-          title={graph.name} 
-          subtitle={graph.subtitle} 
-          gemeo={graph.digital_twin_id}
-          // apiAddress={graph.apiAddress} 
-          sensores={[...graph.y_axis_1]}/>
-
-          
-          
-        }).splice(6,3)}
-
-      </div> */}
       
     
-    </div>
+    </div></>
   );
 }
 

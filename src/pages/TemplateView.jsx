@@ -16,7 +16,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useSpring, animated } from "@react-spring/web";
+// import { useSpring, animated } from "@react-spring/web";
 import { useLocation, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
@@ -270,7 +270,7 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
     setOpenInForma(false);
   };
 
-  const [shaking, setShaking] = React.useState(false);
+  // const [shaking, setShaking] = React.useState(false);
 
   // const transitions = useTransition(shaking, () => ({
   //   from: { transform: "translate3d(0, 0, 0)" },
@@ -279,11 +279,11 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
   //   config: { duration: 100 },
   // }));
 
-  const shakeAnimation = useSpring({
-    transform: shaking
-      ? "translate3d(-0px, 0, 0) rotate(-15deg)"
-      : "translate3d(-0px, 0, 0) rotate(+15deg)",
-  });
+  // const shakeAnimation = useSpring({
+  //   transform: shaking
+  //     ? "translate3d(-0px, 0, 0) rotate(-15deg)"
+  //     : "translate3d(-0px, 0, 0) rotate(+15deg)",
+  // });
 
   const [openFeedback, setOpenFeedback] = React.useState(false);
   const [openFaq, setOpenFaq] = React.useState(false);
@@ -360,13 +360,13 @@ export default function TemplateView({ children, isLogged, setIsLogged }) {
                   >
                     {/* <LockOpenIcon /> */}
                     <div>
-                      <animated.div
+                      {/* <animated.div
                         style={shakeAnimation}
                         onMouseEnter={() => setShaking(true)}
                         onMouseLeave={() => setShaking(false)}
-                      >
+                      > */}
                         <LockOpenIcon sx={{ color: "black" }}/>
-                      </animated.div>
+                      {/* </animated.div> */}
                     </div>
                   </IconButton>
                 </Tooltip>

@@ -13,74 +13,74 @@ import { Typography } from "antd";
 
 function RecomendationView({ showRecomendation = false }) {
   const [recomendations,setRecomandations] = React.useState(
-    [
-      {
-        variant:"filled",
-        severity:"error",
-        title:'Recomendacao',
-        subtitle:'subtitulo 1',
-        description:'descricao 1',
-        recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-        eficiencia:{value:'eficiencia',
-                    time:''},
-        variaveis:[
-          {value:'100',
-        time:''},
-          {value:'20',
-        time:''},
-          {value:'30',
-        time:''}]
-        },
-        {
-          variant:"filled",
-          severity:"error",
-          title:'Recomendacao',
-          subtitle:'subtitulo 2',
-          description:'descricao 2',
-          recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-          eficiencia:{value:'eficiencia',
-                      time:''},
-          variaveis:[
-            {value:'100',
-          time:''},
-            {value:'20',
-          time:''},
-            {value:'30',
-          time:''}]
-          },{
-            variant:"filled",
-            severity:"error",
-            title:'Recomendacao',
-            subtitle:'subtitulo 3',
-            description:'descricao 3',
-            recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-            eficiencia:{value:'eficiencia',
-                        time:''},
-            variaveis:[
-              {value:'100',
-            time:''},
-              {value:'20',
-            time:''},
-              {value:'30',
-            time:''}]
-            },{
-              variant:"filled",
-              severity:"error",
-              title:'Recomendacao',
-              subtitle:'subtitulo 4',
-              description:'descricao 4',
-              recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
-              eficiencia:{value:'eficiencia',
-                          time:''},
-              variaveis:[
-                {value:'100',
-              time:''},
-                {value:'20',
-              time:''},
-                {value:'30',
-              time:''}]
-              },
-    ]
+    // [
+    //   {
+    //     variant:"filled",
+    //     severity:"error",
+    //     title:'Recomendacao',
+    //     subtitle:'subtitulo 1',
+    //     description:'descricao 1',
+    //     recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //     eficiencia:{value:'eficiencia',
+    //                 time:''},
+    //     variaveis:[
+    //       {value:'100',
+    //     time:''},
+    //       {value:'20',
+    //     time:''},
+    //       {value:'30',
+    //     time:''}]
+    //     },
+    //     {
+    //       variant:"filled",
+    //       severity:"error",
+    //       title:'Recomendacao',
+    //       subtitle:'subtitulo 2',
+    //       description:'descricao 2',
+    //       recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //       eficiencia:{value:'eficiencia',
+    //                   time:''},
+    //       variaveis:[
+    //         {value:'100',
+    //       time:''},
+    //         {value:'20',
+    //       time:''},
+    //         {value:'30',
+    //       time:''}]
+    //       },{
+    //         variant:"filled",
+    //         severity:"error",
+    //         title:'Recomendacao',
+    //         subtitle:'subtitulo 3',
+    //         description:'descricao 3',
+    //         recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //         eficiencia:{value:'eficiencia',
+    //                     time:''},
+    //         variaveis:[
+    //           {value:'100',
+    //         time:''},
+    //           {value:'20',
+    //         time:''},
+    //           {value:'30',
+    //         time:''}]
+    //         },{
+    //           variant:"filled",
+    //           severity:"error",
+    //           title:'Recomendacao',
+    //           subtitle:'subtitulo 4',
+    //           description:'descricao 4',
+    //           recomendation:[{ sensor:'sensor 1',value:'100',recomendation:'150',unit:'%'},{ sensor:'sensor 2',value:'50',recomendation:'70',unit:'%'},{ sensor:'sensor 3',value:'100',recomendation:'10',unit:'%'},{ sensor:'sensor 4',value:'100',recomendation:'50',unit:'%'}],
+    //           eficiencia:{value:'eficiencia',
+    //                       time:''},
+    //           variaveis:[
+    //             {value:'100',
+    //           time:''},
+    //             {value:'20',
+    //           time:''},
+    //             {value:'30',
+    //           time:''}]
+    //           },
+    // ]
   )
   const [ selected, setSelected ] = useState({title:'',subtitle:'',description:'',recomendation:'',eficiencia:'',variaveis:''});
   const layout = {

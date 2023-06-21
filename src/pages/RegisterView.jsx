@@ -13,7 +13,7 @@ function RegisterView({ setIsLogged }) {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const [sucess, setSucess] = useState(null);
-  const [openSnackbar, setOpenSnackbar] = useState(true);
+  // const [openSnackbar, setOpenSnackbar] = useState(true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,7 +28,7 @@ function RegisterView({ setIsLogged }) {
         console.log(response.data);
         setSucess(`Usuário ${response.data.username} cadastrado com sucesso!`);
         setTimeout(() => {
-          setOpenSnackbar(true);
+          // setOpenSnackbar(true);
           setSucess(null);
           navigate("/login");
         }, 3000);
@@ -36,9 +36,9 @@ function RegisterView({ setIsLogged }) {
       .catch((error) => {
         if (error.response.status) {
           setError("Falha ao cadastrar o Usuário!");
-          setOpenSnackbar(true);
+          // setOpenSnackbar(true);
           setTimeout(() => {
-            setOpenSnackbar(false);
+            // setOpenSnackbar(false);
             setError(null);
           }, 5000);
         }
@@ -64,7 +64,7 @@ function RegisterView({ setIsLogged }) {
           width: "50%",
           minWidth: "500px",
 
-          display: "flex",
+          // display: "flex",
         }}
       >
         <Paper
