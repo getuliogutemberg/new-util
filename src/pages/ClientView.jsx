@@ -1,8 +1,9 @@
 import React from "react";
+import ChartServices from "../services/ChartServices";
 
-import FieldRecomendations from "../components/FieldRecomendations";
 
-import { GraphchartCard }  from '@getuliogutemberg/react-hub'
+
+import { GraphchartCard , FieldRecomendations}  from '@getuliogutemberg/react-hub'
 
 
 
@@ -78,72 +79,7 @@ function ClientView() {
               },
     ]
   )
-  const [graphs, setGraphs] = React.useState([
-    { grow:0,
-      title:"teste1",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:1,
-      title:"teste2",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:0,
-      title:"teste3",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:1,
-      title:"teste4",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    
-    { grow:1,
-      title:"teste5",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:1,
-      title:"teste6",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:1,
-      title:"teste7",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:1,
-      title:"teste8",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-    { grow:1,
-      title:"teste9",
-      subtitle:"",
-      gemeo:1 ,
-      apiAddress:"http://localhost.com" ,
-      sensores:[],
-    },
-  ]);
+  const [graphs, setGraphs] = React.useState([]);
   
   const layout = {
     FieldRecomendations: {
@@ -164,51 +100,85 @@ function ClientView() {
     },
   };
 
-  
+  React.useEffect(()=>{
+
+    ChartServices.getAlertsByTwin(1).then((res)=>{setRecomandations(res)
+      
+    })
+    const interval = setInterval(()=>{
+      ChartServices.getAlertsByTwin(1).then((res)=>{setRecomandations(res.data)
+      
+      })
+    },10000)
+
+    return () => { 
+      clearInterval(interval)
+      
+    }
+
+  },[])
+
+  React.useEffect(()=>{
+    ChartServices.getGraphsByTwin(localStorage.getItem('twin_id')).then((res)=>{ 
+      // console.log(res.data) 
+      setGraphs(res.data) 
+    })
+  },[])
 
 
-  
-
-
-
-  
-  
   return (
-    <div style={{ maxHeight: "100%" ,overflowY:'scroll'}}>
+    <div style={{ maxHeight: "100%" ,overflowY:'hidden',display:'flex',flexDirection:'column',flexGrow:1}}>
       <FieldRecomendations
       
       flexGrow={layout.FieldRecomendations.flexGrow}
       hidden={layout.FieldRecomendations.hidden}
       recomendations ={recomendations}
       />
-      <div style={{display:'flex',flexDirection:'row'}}>
+      <div style={{display:'flex',flexDirection:'column',flexWrap:'wrap',flexGrow:1}}>
+
 
         {graphs.map((graph)=>{
-          return  <GraphchartCard 
-          key={graph.title}
-          chartType='bar' 
-          flexGrow={graph.grow} 
-          title={graph.title} 
-          subtitle={graph.subtitle} 
-          gemeo={graph.gemeo}
-          apiAddress={graph.apiAddress} 
-          sensores={graph.sensores}/>
+          // console.log([...graph.y_axis_1])
           
-        }).splice(0,3)}
+          
+          return  (
+          <div style={{minWidth:'450px',flexGrow:1}}>
+          <GraphchartCard 
+          services={ChartServices}
+          key={graph.name}
+          chartType={graph.default_visualization} 
+          flexGrow={1} 
+          title={graph.name} 
+          subtitle={''} 
+          gemeo={graph.digital_twin_id}
+          // apiAddress={graph.apiAddress} 
+          sensores={[...graph.y_axis_1]}/>
+        </div>
+          )
+
+          
+          
+        }).splice(0,1)}
   
       </div>
-      <div style={{display:'flex',flexDirection:'row'}}>
+      {/* <div style={{display:'flex',flexDirection:'row'}}>
 
         {graphs.map((graph)=>{
+          console.log([...graph.y_axis_1])
+
           return  <GraphchartCard 
-          key={graph.title}
-          chartType='bar' 
-          flexGrow={graph.grow} 
-          title={graph.title} 
+          services={ChartServices}
+          key={graph.name}
+          chartType={graph.default_visualization} 
+          flexGrow={1} 
+          title={graph.name} 
           subtitle={graph.subtitle} 
-          gemeo={graph.gemeo}
-          apiAddress={graph.apiAddress} 
-          sensores={graph.sensores}/>
+          gemeo={graph.digital_twin_id}
+          // apiAddress={graph.apiAddress} 
+          sensores={[...graph.y_axis_1]}/>
+
+
+
       
       
         }).splice(4,2)}
@@ -217,20 +187,25 @@ function ClientView() {
       <div style={{display:'flex',flexDirection:'row'}}>
 
         {graphs.map((graph)=>{
+                    console.log([...graph.y_axis_1])
+
           return  <GraphchartCard 
-          key={graph.title}
-          chartType='bar' 
-          flexGrow={graph.grow} 
-          title={graph.title} 
+          services={ChartServices}
+          key={graph.name}
+          chartType={graph.default_visualization} 
+          flexGrow={1} 
+          title={graph.name} 
           subtitle={graph.subtitle} 
-          gemeo={graph.gemeo}
-          apiAddress={graph.apiAddress} 
-          sensores={graph.sensores}/>
+          gemeo={graph.digital_twin_id}
+          // apiAddress={graph.apiAddress} 
+          sensores={[...graph.y_axis_1]}/>
+
           
           
         }).splice(6,3)}
 
-      </div>
+      </div> */}
+      
     
     </div>
   );
