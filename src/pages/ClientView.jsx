@@ -130,8 +130,7 @@ function ClientView() {
     <div style={{ maxHeight: "100%" ,overflowY:'hidden',display:'flex',flexDirection:'column',flexGrow:1}}>
       <FieldRecomendations
       
-      flexGrow={layout.FieldRecomendations.flexGrow}
-      hidden={layout.FieldRecomendations.hidden}
+      
       recomendations ={recomendations}
       />
       <div style={{display:'flex',flexDirection:'column',flexWrap:'wrap',flexGrow:1}}>
