@@ -1,9 +1,8 @@
 import React from "react";
-import FieldCard from "../components/FieldCard";
-import FieldRow from "../components/FieldRow";
-import FieldColumn from "../components/FieldColumn";
-import FieldView from "../components/FieldView";
-import FieldRecomendations from "../components/FieldRecomendations";
+
+import {  FieldCard, FieldRecomendations, GraphchartCardMultiUnit}  from '@getuliogutemberg/react-hub'
+import ChartServices from "../services/ChartServices";
+
 import { useEffect ,useState} from "react";
 // import { useNavigate } from "react-router-dom";
 import { DatePicker ,Space,Select,Checkbox,List,Skeleton, Divider,Button} from 'antd';
@@ -35,55 +34,23 @@ function SensorDataView({ showRecomendation = false }) {
   }, []);
 
   const { RangePicker } = DatePicker;
-  const layout = {
-    FieldRecomendations: {
-      hidden: showRecomendation,
-      flexGrow: 1,
-    },
-    FieldView: {
-      hidden: false,
-      flexGrow: 1,
-    },
-    FieldColumn: {
-      hidden: false,
-      flexGrow: 1,
-    },
-    FieldRow: {
-      hidden: false,
-      flexGrow: 1,
-    },
-  };
+  const [recomendations , setRecomendations] = useState();
 
   // const navigate = useNavigate();
   const handleChange = (value) => {
     console.log(`selected ${value}`);
   };
   return (
-    <div
-      style={{
-        height: "calc(100vh - 65px)",
-        overflowX: "auto",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <FieldRecomendations
-        flexGrow={layout.FieldRecomendations.flexGrow}
-        hidden={layout.FieldRecomendations.hidden}
-      />
+    <div style={{display:'flex',flexGrow:1,width:'500px'}}>
+      {recomendations && <FieldRecomendations
+      services={ChartServices}
+      
+      recomendations ={recomendations}
+      />}
 
-      <FieldView flexGrow={1} hidden={layout.FieldView.hidden}>
-        <FieldColumn
-          flexGrow={0}
-          hidden={layout.FieldColumn.hidden}
-          showFieldRecomendations={!layout.FieldRecomendations.hidden}
-        >
-          <FieldRow
-            flexGrow={layout.FieldRow.flexGrow}
-            hidden={layout.FieldRow.hidden}
-          >
-            <FieldCard flexGrow={0} hidden={0} title="Historicos de Dados" subtitle=""  >
-            <Space direction="vertical" size={20} style={{width:"95%",flexGrow:1,margin:"0 auto"}}>
+          <div style={{display:'flex',flexGrow:1,flexFlow:'row'}}> 
+            <FieldCard title="Historicos de Dados" subtitle=""  >
+            
               <Typography >Periodo:</Typography>
               <RangePicker />
               <Typography > Unidade Fabril :</Typography>
@@ -153,7 +120,7 @@ function SensorDataView({ showRecomendation = false }) {
         border: '1px solid rgba(140, 140, 140, 0.35)',
       }}
     >
-<InfiniteScroll
+      <InfiniteScroll
         dataLength={data.length}
         next={loadMoreData}
         hasMore={data.length < 100}
@@ -174,132 +141,27 @@ function SensorDataView({ showRecomendation = false }) {
             </List.Item>
           )}
         />
-      </InfiniteScroll></div>
+      </InfiniteScroll>
+      </div>
               
-            </Space>
+           
       <Button type="primary" htmlType="submit" style={{background:"#124251", }}>
         Consultar
       </Button>
             
             </FieldCard>
-          </FieldRow>
-        </FieldColumn>
-        <FieldColumn
-          flexGrow={1}
-          hidden={layout.FieldColumn.hidden}
-          showFieldRecomendations={!layout.FieldRecomendations.hidden}
-        >
-          <FieldRow
-            flexGrow={layout.FieldRow.flexGrow}
-            hidden={layout.FieldRow.hidden}
-          >
-            <FieldCard flexGrow={1} hidden={false} title="Consulta" subtitle="Dia/Mes/Ano - Dia/Mes/Ano" >
-              
-              
-              <div style={{display:"flex",flexGrow:1,margin:"10px",flexDirection:"column"}}>
             
-
-              <ReactEcharts option={{
-    tooltip: {
-      
+          </div>
         
-    
-      
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            crossStyle: {
-                color: '#999'
-            }
-        }
-    },
-    toolbox: {
-        feature: {
-            dataView: {show: true, readOnly: false},
-            magicType: {show: true, type: ['line', 'bar']},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
-    },
-    legend: {
-        data: ['蒸发量', '降水量', '平均温度']
-    },
-    xAxis: [
-      
-        {
-            type: 'category',
-            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-            axisPointer: {
-              
-              snap: true,
-              label: {
-                show: true,
-                
-              },}
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            name: 'ml',
-            min: 0,
-            max: 250,
-            interval: 50,
-            axisLabel: {
-                formatter: '{value} ml'
-            }
-            
-        },
-        {
-            type: 'value',
-            name: '温度',
-            min: 0,
-            max: 25,
-            interval: 5,
-            axisLabel: {
-               
-                formatter: '{value} °C'
-            }
-        },
-         {
-            offset:60,
-            type: 'value',
-            name: 'metro',
-            min: 0,
-            max: 900,
-            interval: 50,
-            axisLabel: {
-                formatter: '{value} m'
-            }
-        }
-    ],
-    series: [
-        {
-            name: '蒸发量',
-            type: 'bar',
-            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-        },
-        {
-            name: '降水量',
-            type: 'bar',
-            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-        },
-        {
-            name: '平均温度',
-            type: 'line',
-            yAxisIndex: 1,
-            data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
-        }
-    ]
-}
-} style={{flexGrow:1,border:'',justifyContent:'center',alignItems:'center',display:'flex'}}/>
-              </div>
+
+
+          <GraphchartCardMultiUnit title="Consulta" subtitle="" /> 
+        
+
              
-          </FieldCard>
-          </FieldRow>
-        </FieldColumn>
-      </FieldView>
-    </div>
+            
+        
+      </div>
   );
 }
 

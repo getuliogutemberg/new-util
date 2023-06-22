@@ -1528,10 +1528,10 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "6.4.0"
 
-"@getuliogutemberg/react-hub@^0.1.111":
-  "integrity" "sha512-gweQUYUxz9wYCjco4f+QIm6HerxjSitI2NWzziKnaF3+opz0lMIAok+tqhtfsNeH5agM9Cz/6O1B+mlpdRKb6w=="
-  "resolved" "https://registry.npmjs.org/@getuliogutemberg/react-hub/-/react-hub-0.1.111.tgz"
-  "version" "0.1.111"
+"@getuliogutemberg/react-hub@^0.1.112":
+  "integrity" "sha512-gozz1r8+IcPxsxaQVr90Li6RaBc61tR5Y6XHH90HEx4FJmVxmr8uhQE4ZgmK7WbwjocevU0U5gmc1vAabOZM6Q=="
+  "resolved" "https://registry.npmjs.org/@getuliogutemberg/react-hub/-/react-hub-0.1.112.tgz"
+  "version" "0.1.112"
   dependencies:
     "@emotion/react" "^11.11.1"
     "@emotion/styled" "^11.11.0"
